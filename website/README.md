@@ -8,6 +8,6 @@ GitHub actions link to https://github.com/vvmahesh0/ii-studio. Copy prompt loads
 
 Preview: `python3 -m http.server 4174 --bind 127.0.0.1 --directory public` from this folder.
 
-Deploy from this folder with the Vercel CLI, linked to the existing ii-studio-landing project under mahesh-team1: `vercel --prod --scope mahesh-team1`. After each deployment, move the short alias to its new deployment URL: `vercel alias set <deployment-url> iistudio.vercel.app --scope mahesh-team1`. The older ii-studio-landing.vercel.app address also remains available. No environment variables or AI credentials are required. Deployment machine configuration in .vercel/ stays ignored.
+Deploy from this folder with the Vercel CLI, linked to the existing iistudio project under mahesh-team1: `vercel --prod --scope mahesh-team1`. iistudio.vercel.app is a registered production domain and updates on production deployments. The older ii-studio-landing.vercel.app address also remains available. No environment variables or AI credentials are required. Deployment machine configuration in .vercel/ stays ignored.
 
-Rollback: promote a known-good deployment in Vercel, then point iistudio.vercel.app at that deployment. No studio data is stored by this site.
+Rollback: promote a known-good deployment in Vercel, verify iistudio.vercel.app serves that deployment. No studio data is stored by this site.
