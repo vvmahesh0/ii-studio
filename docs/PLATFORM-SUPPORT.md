@@ -7,11 +7,11 @@ II studio's setup and runtime adapters target macOS arm64/x64 and native Windows
 | Platform | Installation/build | Synthetic transport | Authenticated generation |
 |---|---|---|---|
 | Apple Silicon macOS | Local checks; compatibility CI | Local tests and CI | Antigravity and Codex have recorded live checks; see PROVIDERS.md |
-| Intel macOS | CI on macos-15-intel; check linked run for actual outcome | Same fixtures, including cancellation | Not yet verified; experimental |
-| Windows 11 x64 | CI uses Windows Server 2025 x64, not a Windows 11 desktop | Same fixtures using native .cmd launchers | Not yet verified; experimental |
+| Intel macOS | Passed final-code CI on macos-15-intel | Passed synthetic fixtures and cancellation checks | Not yet verified; experimental |
+| Windows 11 x64 | Passed CI on Windows Server 2025 x64, not a Windows 11 desktop | Passed native .cmd launcher, timeout and process-tree tests | Not yet verified; experimental |
 | Linux / WSL / Windows ARM | Outside this release's setup targets | No support claim | No support claim |
 
-See the repository's Platform compatibility workflow for actual runner results. A configured job is not a passed check. Windows Server CI is useful build/process evidence, not Windows 11 browser or AI-provider certification.
+See [PLATFORM-VERIFICATION.md](PLATFORM-VERIFICATION.md) and the repository's Platform compatibility workflow for actual runner results. A configured job is not a passed check. Windows Server CI is useful build/process evidence, not Windows 11 browser or AI-provider certification.
 
 ## Installation
 
