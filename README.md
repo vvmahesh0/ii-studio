@@ -6,7 +6,9 @@ Created by **[Mahesh V V](https://www.linkedin.com/in/vvmahesh/)** · [@vvmahesh
 
 II studio helps designers, product managers, founders and business analysts explore an idea using their own AI connection. Describe a dashboard, form, widget or process; watch it render, refine it and keep its history locally.
 
-**v0.1.0 release candidate · Apple Silicon macOS · Local-first · Apache-2.0**
+**v0.1.0 release candidate · Local-first · Apache-2.0**
+
+**Verified platform: Apple Silicon macOS.** The web UI is not inherently Apple-Silicon-specific, but the current installer and CLI integration are not yet cross-platform. See [platform status](docs/PLATFORM-SUPPORT.md).
 
 Website: [iistudio.vercel.app](https://iistudio.vercel.app/)
 
@@ -21,7 +23,7 @@ Generated interfaces use registered components. They do not deploy applications,
 
 ## Quick start
 
-Requirements: **Apple Silicon Mac (arm64), Node.js 24+, npm, and a supported CLI installed and signed in**. The app does not install AI CLIs or include a model subscription. Other platforms are unverified.
+Requirements: **Apple Silicon Mac (arm64), Node.js 24+, npm, and a supported CLI installed and signed in**. The app does not install AI CLIs or include a model subscription. Other platforms are not currently supported by the setup script. This is a release/setup limitation, not a requirement for running the AI model on an Apple processor.
 
 Clone [vvmahesh0/ii-studio](https://github.com/vvmahesh0/ii-studio), then open its folder:
 
