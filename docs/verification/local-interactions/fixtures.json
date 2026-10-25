@@ -1,0 +1,177 @@
+{
+  "format": "ii-studio-backup",
+  "formatVersion": 1,
+  "exportedAt": "2026-10-18T10:01:32.440Z",
+  "projects": [
+    {
+      "id": "interaction-project",
+      "name": "Local behavior checks",
+      "createdAt": "2026-10-18T10:01:32.440Z",
+      "updatedAt": "2026-10-18T10:01:32.440Z"
+    }
+  ],
+  "conversations": [
+    {
+      "id": "interaction-conversation",
+      "projectId": "interaction-project",
+      "title": "Forms tables and lists",
+      "createdAt": "2026-10-18T10:01:32.440Z",
+      "updatedAt": "2026-10-18T10:01:32.440Z"
+    }
+  ],
+  "artifacts": [
+    {
+      "id": "interaction-0",
+      "conversationId": "interaction-conversation",
+      "type": "interface",
+      "title": "Modern local form",
+      "originalPrompt": "Deterministic interaction verification fixture.",
+      "createdAt": "2026-10-18T10:01:32.440Z",
+      "updatedAt": "2026-10-18T10:01:32.440Z",
+      "activeGenerationId": "interaction-0-v1",
+      "latestGenerationId": "interaction-0-v1"
+    },
+    {
+      "id": "interaction-1",
+      "conversationId": "interaction-conversation",
+      "type": "interface",
+      "title": "Default local form",
+      "originalPrompt": "Deterministic interaction verification fixture.",
+      "createdAt": "2026-10-18T10:01:32.440Z",
+      "updatedAt": "2026-10-18T10:01:32.440Z",
+      "activeGenerationId": "interaction-1-v1",
+      "latestGenerationId": "interaction-1-v1"
+    },
+    {
+      "id": "interaction-2",
+      "conversationId": "interaction-conversation",
+      "type": "interface",
+      "title": "Modern local table",
+      "originalPrompt": "Deterministic interaction verification fixture.",
+      "createdAt": "2026-10-18T10:01:32.440Z",
+      "updatedAt": "2026-10-18T10:01:32.440Z",
+      "activeGenerationId": "interaction-2-v1",
+      "latestGenerationId": "interaction-2-v1"
+    },
+    {
+      "id": "interaction-3",
+      "conversationId": "interaction-conversation",
+      "type": "interface",
+      "title": "Default local table",
+      "originalPrompt": "Deterministic interaction verification fixture.",
+      "createdAt": "2026-10-18T10:01:32.440Z",
+      "updatedAt": "2026-10-18T10:01:32.440Z",
+      "activeGenerationId": "interaction-3-v1",
+      "latestGenerationId": "interaction-3-v1"
+    },
+    {
+      "id": "interaction-4",
+      "conversationId": "interaction-conversation",
+      "type": "interface",
+      "title": "Default local list",
+      "originalPrompt": "Deterministic interaction verification fixture.",
+      "createdAt": "2026-10-18T10:01:32.440Z",
+      "updatedAt": "2026-10-18T10:01:32.440Z",
+      "activeGenerationId": "interaction-4-v1",
+      "latestGenerationId": "interaction-4-v1"
+    },
+    {
+      "id": "interaction-5",
+      "conversationId": "interaction-conversation",
+      "type": "interface",
+      "title": "Modern local list",
+      "originalPrompt": "Deterministic interaction verification fixture.",
+      "createdAt": "2026-10-18T10:01:32.440Z",
+      "updatedAt": "2026-10-18T10:01:32.440Z",
+      "activeGenerationId": "interaction-5-v1",
+      "latestGenerationId": "interaction-5-v1"
+    }
+  ],
+  "generations": [
+    {
+      "id": "interaction-0-v1",
+      "artifactId": "interaction-0",
+      "version": 1,
+      "parentGenerationId": null,
+      "instruction": "Deterministic interaction verification fixture.",
+      "createdAt": "2026-10-18T10:01:32.440Z",
+      "completedAt": "2026-10-18T10:01:32.440Z",
+      "schemaVersion": 1,
+      "type": "interface",
+      "theme": "modern",
+      "revision": "modern-v3",
+      "program": "root = Page([Heading(\"Contact details\",\"h1\",\"lg\"), form])\nform = Form(\"contact\", Buttons([Button(\"Submit\",null,\"default\",null,\"submit\"),Button(\"Reset\",null,\"outline\",null,\"reset\")]),[FormControl(\"Name\",Input(\"name\",\"Your name\",\"text\",{required:true})),FormControl(\"Email\",Input(\"email\",\"you@example.com\",\"email\",{required:true,email:true})),FormControl(\"Plan\",Select(\"plan\",[SelectItem(\"pro\",\"Pro\"),SelectItem(\"team\",\"Team\")])),FormControl(\"Agreement\",CheckBoxGroup(\"agreements\",[CheckBoxItem(\"terms\",\"I agree\")],{required:true}))],2,{name:\"Maya\",email:\"\",plan:\"pro\",agreements:[]})"
+    },
+    {
+      "id": "interaction-1-v1",
+      "artifactId": "interaction-1",
+      "version": 1,
+      "parentGenerationId": null,
+      "instruction": "Deterministic interaction verification fixture.",
+      "createdAt": "2026-10-18T10:01:32.440Z",
+      "completedAt": "2026-10-18T10:01:32.440Z",
+      "schemaVersion": 1,
+      "type": "interface",
+      "theme": "default",
+      "revision": "default-v1",
+      "program": "root = Col([Title(\"Contact details\",\"lg\"), form])\nform = Form([Input(\"Maya\",\"Name\",\"text\",\"Your name\",{required:true}),Input(\"\",\"Email\",\"email\",\"you@example.com\",{required:true,email:true}),TextArea(\"\",\"Message\",\"Your message\",3,{required:true}),Button(\"Submit\",null,\"solid\",null,null,null,false,false,\"submit\"),Button(\"Reset\",null,\"outline\",null,null,null,false,false,\"reset\")])"
+    },
+    {
+      "id": "interaction-2-v1",
+      "artifactId": "interaction-2",
+      "version": 1,
+      "parentGenerationId": null,
+      "instruction": "Deterministic interaction verification fixture.",
+      "createdAt": "2026-10-18T10:01:32.440Z",
+      "completedAt": "2026-10-18T10:01:32.440Z",
+      "schemaVersion": 1,
+      "type": "interface",
+      "theme": "modern",
+      "revision": "modern-v3",
+      "program": "root = Page([Heading(\"Support tickets\",\"h1\",\"lg\"), table])\ntable = Table([TableColumn(\"ID\",\"string\"),TableColumn(\"Customer\",\"string\"),TableColumn(\"Amount\",\"number\"),TableColumn(\"Status\",\"string\")],[[\"T1\",\"Maya\",120,Badge(\"Open\",\"secondary\")],[\"T2\",\"Alex\",30,Badge(\"Closed\",\"outline\")],[\"T3\",\"Leah\",240,Badge(\"Open\",\"secondary\")],[\"T4\",\"Sam\",10,Badge(\"Pending\",\"outline\")]],2,{search:true,filterBy:[\"Status\"],sort:true})"
+    },
+    {
+      "id": "interaction-3-v1",
+      "artifactId": "interaction-3",
+      "version": 1,
+      "parentGenerationId": null,
+      "instruction": "Deterministic interaction verification fixture.",
+      "createdAt": "2026-10-18T10:01:32.440Z",
+      "completedAt": "2026-10-18T10:01:32.440Z",
+      "schemaVersion": 1,
+      "type": "interface",
+      "theme": "default",
+      "revision": "default-v1",
+      "program": "root = Col([Title(\"Support tickets\",\"lg\"),Table([\"ID\",\"Customer\",\"Amount\",\"Status\"],[[\"T1\",\"Maya\",\"$120\",Badge(\"Open\")],[\"T2\",\"Alex\",\"$30\",Badge(\"Closed\")],[\"T3\",\"Leah\",\"$240\",Badge(\"Open\")],[\"T4\",\"Sam\",\"$10\",Badge(\"Pending\")]],{search:true,filterBy:[\"Status\"],sort:true,pageSize:2})])"
+    },
+    {
+      "id": "interaction-4-v1",
+      "artifactId": "interaction-4",
+      "version": 1,
+      "parentGenerationId": null,
+      "instruction": "Deterministic interaction verification fixture.",
+      "createdAt": "2026-10-18T10:01:32.440Z",
+      "completedAt": "2026-10-18T10:01:32.440Z",
+      "schemaVersion": 1,
+      "type": "interface",
+      "theme": "default",
+      "revision": "default-v1",
+      "program": "root = Col([Title(\"Tasks\"),DataList([{id:\"1\",title:\"Zebra\",description:\"Review the report\",status:\"Open\"},{id:\"2\",title:\"Alpha\",description:\"Write the brief\",status:\"Done\"},{id:\"3\",title:\"Bravo\",description:\"Design the dashboard\",status:\"Open\"}],{search:true,filterBy:[\"Status\"],sort:true,pageSize:2})])"
+    },
+    {
+      "id": "interaction-5-v1",
+      "artifactId": "interaction-5",
+      "version": 1,
+      "parentGenerationId": null,
+      "instruction": "Deterministic interaction verification fixture.",
+      "createdAt": "2026-10-18T10:01:32.440Z",
+      "completedAt": "2026-10-18T10:01:32.440Z",
+      "schemaVersion": 1,
+      "type": "interface",
+      "theme": "modern",
+      "revision": "modern-v3",
+      "program": "root = Page([Heading(\"Tasks\"),DataList([{id:\"1\",title:\"Zebra\",description:\"Review the report\",status:\"Open\"},{id:\"2\",title:\"Alpha\",description:\"Write the brief\",status:\"Done\"},{id:\"3\",title:\"Bravo\",description:\"Design the dashboard\",status:\"Open\"}],{search:true,filterBy:[\"Status\"],sort:true,pageSize:2})])"
+    }
+  ],
+  "working": []
+}

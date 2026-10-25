@@ -1,0 +1,1770 @@
+{
+  "root": "Col",
+  "components": {
+    "ImagePlaceholder": {
+      "signature": "ImagePlaceholder(label?: string, aspect?: \"landscape\" | \"portrait\" | \"square\" | \"wide\" | \"avatar\")",
+      "description": "Clean local image placeholder. Use whenever a photo, product image, illustration, thumbnail or avatar is requested. Optional contextual label and aspect: landscape (default), portrait, square, wide or avatar. No URL, image search or network request."
+    },
+    "DataList": {
+      "signature": "DataList(items: {id: string, title: string, description?: string, status?: string}[], controls?: {search?: boolean, filterBy?: string[], sort?: boolean, pageSize?: number})",
+      "description": "Local searchable/filterable/sortable list. items: [{id,title,description?,status?}], controls: {search:true,filterBy:[\"Status\"],sort:true,pageSize:5}. Uses provided data only."
+    },
+    "Col": {
+      "signature": "Col(children: Node[], gap?: number, align?: \"start\" | \"center\" | \"end\" | \"stretch\")",
+      "description": "Vertical layout. Without gap it spaces blocks like an article."
+    },
+    "Row": {
+      "signature": "Row(children: Node[], gap?: number, align?: \"start\" | \"center\" | \"end\" | \"stretch\", justify?: \"start\" | \"center\" | \"end\" | \"between\", wrap?: boolean)",
+      "description": "Horizontal layout; items are vertically centered."
+    },
+    "Box": {
+      "signature": "Box(children?: Node[], direction?: \"row\" | \"col\", gap?: number, padding?: number, background?: Color, radius?: Radius, border?: boolean, width?: Length, height?: Length, flex?: number, align?: \"start\" | \"center\" | \"end\" | \"stretch\", justify?: \"start\" | \"center\" | \"end\" | \"between\", wrap?: boolean)",
+      "description": "Flex container, a column by default. radius also clips the content."
+    },
+    "Grid": {
+      "signature": "Grid(children: Node[], columns?: number, minChildWidth?: number, gap?: number)",
+      "description": "Equal columns (default 2). With minChildWidth (px), columns drop on narrow screens."
+    },
+    "Card": {
+      "signature": "Card(children: Node[], variant?: \"outline\" | \"soft\", padding?: number, gap?: number)",
+      "description": "Panel with a border; soft is a filled panel for summaries."
+    },
+    "Divider": {
+      "signature": "Divider()",
+      "description": ""
+    },
+    "Spacer": {
+      "signature": "Spacer()",
+      "description": "Fills the free space in a Row."
+    },
+    "Title": {
+      "signature": "Title(text: string, size?: \"sm\" | \"md\" | \"lg\" | \"xl\" | \"2xl\" | \"3xl\", color?: Color)",
+      "description": "Heading; md for a card title, lg for a section, 2xl for a big number."
+    },
+    "Text": {
+      "signature": "Text(text: string | Node[], size?: \"xs\" | \"sm\" | \"md\" | \"lg\", color?: Color, weight?: \"normal\" | \"medium\" | \"semibold\", italic?: boolean, lineThrough?: boolean, tabularNums?: boolean, maxLines?: number)",
+      "description": "Paragraph; supports **bold**, *italic*, `code` and [links](https://…). text may be a list mixing strings and inline components: [Icon(\"clock\", \"sm\"), \" 25 min · \", Badge(\"Easy\")]."
+    },
+    "Caption": {
+      "signature": "Caption(text: string, color?: Color)",
+      "description": "Small secondary text."
+    },
+    "Label": {
+      "signature": "Label(text: string)",
+      "description": "Field or group label."
+    },
+    "Badge": {
+      "signature": "Badge(text: string, color?: \"neutral\" | \"info\" | \"success\" | \"warning\" | \"danger\" | \"purple\" | \"pink\", icon?: string)",
+      "description": "Pill tag; icon is an optional leading lucide name."
+    },
+    "List": {
+      "signature": "List(items: (string | ListItem)[], marker?: \"bullet\" | \"number\" | \"none\", timeline?: boolean)",
+      "description": "timeline joins the markers with a line."
+    },
+    "ListItem": {
+      "signature": "ListItem(title: string, description?: string, marker?: string, children?: Node[])",
+      "description": "marker replaces the bullet or number, e.g. a time or an emoji."
+    },
+    "Button": {
+      "signature": "Button(label: string, action?: ActionExpression, variant?: \"solid\" | \"outline\" | \"soft\" | \"ghost\", color?: \"primary\" | \"danger\" | \"success\", size?: \"sm\" | \"md\" | \"lg\", icon?: string, disabled?: boolean, block?: boolean, behavior?: \"submit\" | \"reset\")",
+      "description": "icon is a lucide name. Optional behavior submit/reset performs local form validation or reset, never network submission."
+    },
+    "IconButton": {
+      "signature": "IconButton(icon: string, action?: ActionExpression, label?: string, variant?: \"outline\" | \"ghost\" | \"solid\")",
+      "description": "Round icon-only button; label is read aloud."
+    },
+    "Pressable": {
+      "signature": "Pressable(children: Node[], action?: ActionExpression, selected?: boolean, padding?: number, background?: Color, radius?: Radius)",
+      "description": "Makes any content clickable, such as a tile or a swatch."
+    },
+    "Timer": {
+      "signature": "Timer(seconds: $binding<number>, label?: string)",
+      "description": "Countdown with start, pause and reset. It counts the bound seconds down to 0, so other statements can react, e.g. $left == 0."
+    },
+    "Input": {
+      "signature": "Input(value: $binding<string | number>, label?: string, type?: \"text\" | \"number\" | \"email\" | \"password\" | \"url\", placeholder?: string, rules?: {required?: boolean, email?: boolean, url?: boolean, numeric?: boolean, min?: number, max?: number, minLength?: number, maxLength?: number, pattern?: string})",
+      "description": "Text or number field; a number field stores numbers. Optional fifth rules object supports required/email/minLength validation."
+    },
+    "TextArea": {
+      "signature": "TextArea(value: $binding<string>, label?: string, placeholder?: string, rows?: number, rules?: {required?: boolean, email?: boolean, url?: boolean, numeric?: boolean, min?: number, max?: number, minLength?: number, maxLength?: number, pattern?: string})",
+      "description": "Optional fifth rules object supports required and length validation."
+    },
+    "Select": {
+      "signature": "Select(value: $binding<string>, options: (string | {value: string, label: string})[], label?: string, placeholder?: string)",
+      "description": "Dropdown, for long option lists."
+    },
+    "SegmentedControl": {
+      "signature": "SegmentedControl(value: $binding<string>, options: (string | {value: string, label: string})[], block?: boolean)",
+      "description": "2 to 4 short choices in a row."
+    },
+    "Slider": {
+      "signature": "Slider(value: $binding<number>, min: number, max: number, step?: number, label?: string, unit?: string, marks?: {value: number, label: string}[])",
+      "description": "Shows label and value; unit like \"%\" or \"$\" formats the value."
+    },
+    "Checkbox": {
+      "signature": "Checkbox(checked: $binding<boolean>, label: string, lineThrough?: boolean)",
+      "description": "lineThrough strikes the label when checked, for to-do lists."
+    },
+    "RadioGroup": {
+      "signature": "RadioGroup(value: $binding<string>, options: (string | {value: string, label: string, description?: string})[], label?: string, variant?: \"list\" | \"pills\" | \"cards\")",
+      "description": "pills for short choices; cards for choices that need a description line."
+    },
+    "DatePicker": {
+      "signature": "DatePicker(value: $binding<string>, label?: string, min?: string, max?: string)",
+      "description": "Dates are \"YYYY-MM-DD\"."
+    },
+    "Form": {
+      "signature": "Form(children: Node[])",
+      "description": "Local form with validation/reset. Groups fields; their values go with any @ToAssistant inside."
+    },
+    "Table": {
+      "signature": "Table(columns: string[], rows: any[][], controls?: {search?: boolean, filterBy?: string[], sort?: boolean, pageSize?: number})",
+      "description": "Each row lists its cells in column order; a cell may be a component. Number columns align right. Optional controls enable local search, filterBy column names, sort and pageSize."
+    },
+    "Chart": {
+      "signature": "Chart(type: \"bar\" | \"line\" | \"area\" | \"pie\" | \"donut\" | \"scatter\", data: Record<string, string | number>[], x?: string, series?: string[], format?: \"number\" | \"currency\" | \"percent\", currency?: string, stacked?: boolean, height?: number)",
+      "description": "Rows of data; x is the category key (a number key for scatter), series the value keys (default: every number key). percent values are like 45; currency is a code like \"EUR\"."
+    },
+    "Icon": {
+      "signature": "Icon(name: string, size?: \"sm\" | \"md\" | \"lg\", color?: Color)",
+      "description": "Decorative lucide icon for stats cards and labels. Not a button; no action or variant."
+    },
+    "Carousel": {
+      "signature": "Carousel(children: Node[], itemWidth?: number, gap?: number)",
+      "description": "Horizontal row that scrolls and snaps, each child an item itemWidth px wide (default 240): photos, cards, options, days."
+    },
+    "Popover": {
+      "signature": "Popover(trigger: string | Node[], content: string | Node[])",
+      "description": "Shows content in a small panel when the trigger is clicked: a definition, a source, details behind an Icon(\"info\", \"sm\")."
+    },
+    "Code": {
+      "signature": "Code(code: string, language?: string)",
+      "description": "Code block with a copy button."
+    },
+    "Quote": {
+      "signature": "Quote(text: string, cite?: string)",
+      "description": "A quotation or a callout with a side rule; cite names the source."
+    },
+    "Math": {
+      "signature": "Math(tex: string, inline?: boolean)",
+      "description": "LaTeX formula, e.g. Math(\"E = mc^2\"); inline true to sit in a Text list."
+    },
+    "Flashcard": {
+      "signature": "Flashcard(front: string | Node[], back: string | Node[], hint?: string)",
+      "description": "Card that flips between front and back when tapped. Put several in a Carousel or Grid."
+    },
+    "Celebration": {
+      "signature": "Celebration(when: boolean)",
+      "description": "Bursts confetti when its condition turns true, e.g. Celebration($score == 5) at the end of a quiz."
+    },
+    "Markdown": {
+      "signature": "Markdown(text: string)",
+      "description": "Prose with headings, lists, quotes, code and tables."
+    },
+    "Link": {
+      "signature": "Link(text: string, url: string)",
+      "description": "Opens an http(s) URL in a new tab."
+    }
+  },
+  "componentGroups": [
+    {
+      "name": "Layout",
+      "components": [
+        "Col",
+        "Row",
+        "Box",
+        "Grid",
+        "Card",
+        "Divider",
+        "Spacer",
+        "Form",
+        "Carousel",
+        "Popover"
+      ],
+      "notes": [
+        "gap and padding are 4px steps. Use Grid with minChildWidth: 180 for responsive cards.",
+        "Colors use ink, muted, faint, surface, info, success, warning, danger, purple, pink or chart1 to chart6."
+      ]
+    },
+    {
+      "name": "Content",
+      "components": [
+        "ImagePlaceholder",
+        "Title",
+        "Text",
+        "Caption",
+        "Label",
+        "Badge",
+        "List",
+        "ListItem",
+        "Table",
+        "Chart",
+        "Icon",
+        "Markdown",
+        "Link",
+        "Code",
+        "Quote",
+        "Math",
+        "Flashcard",
+        "Celebration"
+      ]
+    },
+    {
+      "name": "Controls",
+      "components": [
+        "Button",
+        "IconButton",
+        "Pressable",
+        "Timer",
+        "Input",
+        "TextArea",
+        "Select",
+        "SegmentedControl",
+        "Slider",
+        "Checkbox",
+        "RadioGroup",
+        "DatePicker"
+      ]
+    }
+  ],
+  "schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "ImagePlaceholder": {
+        "$ref": "#/$defs/ImagePlaceholder"
+      },
+      "DataList": {
+        "$ref": "#/$defs/DataList"
+      },
+      "Col": {
+        "$ref": "#/$defs/Col"
+      },
+      "Row": {
+        "$ref": "#/$defs/Row"
+      },
+      "Box": {
+        "$ref": "#/$defs/Box"
+      },
+      "Grid": {
+        "$ref": "#/$defs/Grid"
+      },
+      "Card": {
+        "$ref": "#/$defs/Card"
+      },
+      "Divider": {
+        "$ref": "#/$defs/Divider"
+      },
+      "Spacer": {
+        "$ref": "#/$defs/Spacer"
+      },
+      "Title": {
+        "$ref": "#/$defs/Title"
+      },
+      "Text": {
+        "$ref": "#/$defs/Text"
+      },
+      "Caption": {
+        "$ref": "#/$defs/Caption"
+      },
+      "Label": {
+        "$ref": "#/$defs/Label"
+      },
+      "Badge": {
+        "$ref": "#/$defs/Badge"
+      },
+      "List": {
+        "$ref": "#/$defs/List"
+      },
+      "ListItem": {
+        "$ref": "#/$defs/ListItem"
+      },
+      "Button": {
+        "$ref": "#/$defs/Button"
+      },
+      "IconButton": {
+        "$ref": "#/$defs/IconButton"
+      },
+      "Pressable": {
+        "$ref": "#/$defs/Pressable"
+      },
+      "Timer": {
+        "$ref": "#/$defs/Timer"
+      },
+      "Input": {
+        "$ref": "#/$defs/Input"
+      },
+      "TextArea": {
+        "$ref": "#/$defs/TextArea"
+      },
+      "Select": {
+        "$ref": "#/$defs/Select"
+      },
+      "SegmentedControl": {
+        "$ref": "#/$defs/SegmentedControl"
+      },
+      "Slider": {
+        "$ref": "#/$defs/Slider"
+      },
+      "Checkbox": {
+        "$ref": "#/$defs/Checkbox"
+      },
+      "RadioGroup": {
+        "$ref": "#/$defs/RadioGroup"
+      },
+      "DatePicker": {
+        "$ref": "#/$defs/DatePicker"
+      },
+      "Form": {
+        "$ref": "#/$defs/Form"
+      },
+      "Table": {
+        "$ref": "#/$defs/Table"
+      },
+      "Chart": {
+        "$ref": "#/$defs/Chart"
+      },
+      "Icon": {
+        "$ref": "#/$defs/Icon"
+      },
+      "Carousel": {
+        "$ref": "#/$defs/Carousel"
+      },
+      "Popover": {
+        "$ref": "#/$defs/Popover"
+      },
+      "Code": {
+        "$ref": "#/$defs/Code"
+      },
+      "Quote": {
+        "$ref": "#/$defs/Quote"
+      },
+      "Math": {
+        "$ref": "#/$defs/Math"
+      },
+      "Flashcard": {
+        "$ref": "#/$defs/Flashcard"
+      },
+      "Celebration": {
+        "$ref": "#/$defs/Celebration"
+      },
+      "Markdown": {
+        "$ref": "#/$defs/Markdown"
+      },
+      "Link": {
+        "$ref": "#/$defs/Link"
+      }
+    },
+    "required": [
+      "ImagePlaceholder",
+      "DataList",
+      "Col",
+      "Row",
+      "Box",
+      "Grid",
+      "Card",
+      "Divider",
+      "Spacer",
+      "Title",
+      "Text",
+      "Caption",
+      "Label",
+      "Badge",
+      "List",
+      "ListItem",
+      "Button",
+      "IconButton",
+      "Pressable",
+      "Timer",
+      "Input",
+      "TextArea",
+      "Select",
+      "SegmentedControl",
+      "Slider",
+      "Checkbox",
+      "RadioGroup",
+      "DatePicker",
+      "Form",
+      "Table",
+      "Chart",
+      "Icon",
+      "Carousel",
+      "Popover",
+      "Code",
+      "Quote",
+      "Math",
+      "Flashcard",
+      "Celebration",
+      "Markdown",
+      "Link"
+    ],
+    "additionalProperties": false,
+    "$defs": {
+      "ImagePlaceholder": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string",
+            "maxLength": 120
+          },
+          "aspect": {
+            "type": "string",
+            "enum": [
+              "landscape",
+              "portrait",
+              "square",
+              "wide",
+              "avatar"
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "description": "Clean local image placeholder. Use whenever a photo, product image, illustration, thumbnail or avatar is requested. Optional contextual label and aspect: landscape (default), portrait, square, wide or avatar. No URL, image search or network request."
+      },
+      "DataList": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "title"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "controls": {
+            "type": "object",
+            "properties": {
+              "search": {
+                "type": "boolean"
+              },
+              "filterBy": {
+                "maxItems": 6,
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "sort": {
+                "type": "boolean"
+              },
+              "pageSize": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 100
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "items"
+        ],
+        "additionalProperties": false,
+        "description": "Local searchable/filterable/sortable list. items: [{id,title,description?,status?}], controls: {search:true,filterBy:[\"Status\"],sort:true,pageSize:5}. Uses provided data only."
+      },
+      "Col": {
+        "type": "object",
+        "properties": {
+          "children": {
+            "type": "array",
+            "items": {}
+          },
+          "gap": {
+            "type": "number"
+          },
+          "align": {
+            "type": "string",
+            "enum": [
+              "start",
+              "center",
+              "end",
+              "stretch"
+            ]
+          }
+        },
+        "required": [
+          "children"
+        ],
+        "additionalProperties": false,
+        "description": "Vertical layout. Without gap it spaces blocks like an article."
+      },
+      "Row": {
+        "type": "object",
+        "properties": {
+          "children": {
+            "type": "array",
+            "items": {}
+          },
+          "gap": {
+            "type": "number"
+          },
+          "align": {
+            "type": "string",
+            "enum": [
+              "start",
+              "center",
+              "end",
+              "stretch"
+            ]
+          },
+          "justify": {
+            "type": "string",
+            "enum": [
+              "start",
+              "center",
+              "end",
+              "between"
+            ]
+          },
+          "wrap": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "children"
+        ],
+        "additionalProperties": false,
+        "description": "Horizontal layout; items are vertically centered."
+      },
+      "Box": {
+        "type": "object",
+        "properties": {
+          "children": {
+            "type": "array",
+            "items": {}
+          },
+          "direction": {
+            "type": "string",
+            "enum": [
+              "row",
+              "col"
+            ]
+          },
+          "gap": {
+            "type": "number"
+          },
+          "padding": {
+            "type": "number"
+          },
+          "background": {
+            "type": "string"
+          },
+          "radius": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                  "full"
+                ]
+              },
+              {
+                "type": "number"
+              }
+            ]
+          },
+          "border": {
+            "type": "boolean"
+          },
+          "width": {
+            "type": [
+              "number",
+              "string"
+            ]
+          },
+          "height": {
+            "type": [
+              "number",
+              "string"
+            ]
+          },
+          "flex": {
+            "type": "number"
+          },
+          "align": {
+            "type": "string",
+            "enum": [
+              "start",
+              "center",
+              "end",
+              "stretch"
+            ]
+          },
+          "justify": {
+            "type": "string",
+            "enum": [
+              "start",
+              "center",
+              "end",
+              "between"
+            ]
+          },
+          "wrap": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Flex container, a column by default. radius also clips the content."
+      },
+      "Grid": {
+        "type": "object",
+        "properties": {
+          "children": {
+            "type": "array",
+            "items": {}
+          },
+          "columns": {
+            "type": "number"
+          },
+          "minChildWidth": {
+            "type": "number"
+          },
+          "gap": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "children"
+        ],
+        "additionalProperties": false,
+        "description": "Equal columns (default 2). With minChildWidth (px), columns drop on narrow screens."
+      },
+      "Card": {
+        "type": "object",
+        "properties": {
+          "children": {
+            "type": "array",
+            "items": {}
+          },
+          "variant": {
+            "type": "string",
+            "enum": [
+              "outline",
+              "soft"
+            ]
+          },
+          "padding": {
+            "type": "number"
+          },
+          "gap": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "children"
+        ],
+        "additionalProperties": false,
+        "description": "Panel with a border; soft is a filled panel for summaries."
+      },
+      "Divider": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "Spacer": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false,
+        "description": "Fills the free space in a Row."
+      },
+      "Title": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          },
+          "size": {
+            "type": "string",
+            "enum": [
+              "sm",
+              "md",
+              "lg",
+              "xl",
+              "2xl",
+              "3xl"
+            ]
+          },
+          "color": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "text"
+        ],
+        "additionalProperties": false,
+        "description": "Heading; md for a card title, lg for a section, 2xl for a big number."
+      },
+      "Text": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {}
+              }
+            ]
+          },
+          "size": {
+            "type": "string",
+            "enum": [
+              "xs",
+              "sm",
+              "md",
+              "lg"
+            ]
+          },
+          "color": {
+            "type": "string"
+          },
+          "weight": {
+            "type": "string",
+            "enum": [
+              "normal",
+              "medium",
+              "semibold"
+            ]
+          },
+          "italic": {
+            "type": "boolean"
+          },
+          "lineThrough": {
+            "type": "boolean"
+          },
+          "tabularNums": {
+            "type": "boolean"
+          },
+          "maxLines": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "text"
+        ],
+        "additionalProperties": false,
+        "description": "Paragraph; supports **bold**, *italic*, `code` and [links](https://…). text may be a list mixing strings and inline components: [Icon(\"clock\", \"sm\"), \" 25 min · \", Badge(\"Easy\")]."
+      },
+      "Caption": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          },
+          "color": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "text"
+        ],
+        "additionalProperties": false,
+        "description": "Small secondary text."
+      },
+      "Label": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "text"
+        ],
+        "additionalProperties": false,
+        "description": "Field or group label."
+      },
+      "Badge": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          },
+          "color": {
+            "type": "string",
+            "enum": [
+              "neutral",
+              "info",
+              "success",
+              "warning",
+              "danger",
+              "purple",
+              "pink"
+            ]
+          },
+          "icon": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "text"
+        ],
+        "additionalProperties": false,
+        "description": "Pill tag; icon is an optional leading lucide name."
+      },
+      "List": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "$ref": "#/$defs/ListItem"
+                }
+              ]
+            }
+          },
+          "marker": {
+            "type": "string",
+            "enum": [
+              "bullet",
+              "number",
+              "none"
+            ]
+          },
+          "timeline": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "items"
+        ],
+        "additionalProperties": false,
+        "description": "timeline joins the markers with a line."
+      },
+      "ListItem": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "marker": {
+            "type": "string"
+          },
+          "children": {
+            "type": "array",
+            "items": {}
+          }
+        },
+        "required": [
+          "title"
+        ],
+        "additionalProperties": false,
+        "description": "marker replaces the bullet or number, e.g. a time or an emoji."
+      },
+      "Button": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "action": {
+            "$ref": "#/$defs/ActionExpression"
+          },
+          "variant": {
+            "type": "string",
+            "enum": [
+              "solid",
+              "outline",
+              "soft",
+              "ghost"
+            ]
+          },
+          "color": {
+            "type": "string",
+            "enum": [
+              "primary",
+              "danger",
+              "success"
+            ]
+          },
+          "size": {
+            "type": "string",
+            "enum": [
+              "sm",
+              "md",
+              "lg"
+            ]
+          },
+          "icon": {
+            "type": "string"
+          },
+          "disabled": {
+            "type": "boolean"
+          },
+          "block": {
+            "type": "boolean"
+          },
+          "behavior": {
+            "type": "string",
+            "enum": [
+              "submit",
+              "reset"
+            ]
+          }
+        },
+        "required": [
+          "label"
+        ],
+        "additionalProperties": false,
+        "description": "icon is a lucide name. Optional behavior submit/reset performs local form validation or reset, never network submission."
+      },
+      "ActionExpression": {
+        "anyOf": [
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "const": "open_url"
+              },
+              "url": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "type",
+              "url"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "const": "continue_conversation"
+              },
+              "context": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "type"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string"
+              },
+              "params": {
+                "type": "object",
+                "propertyNames": {
+                  "type": "string"
+                },
+                "additionalProperties": {}
+              }
+            },
+            "required": [
+              "type"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "IconButton": {
+        "type": "object",
+        "properties": {
+          "icon": {
+            "type": "string"
+          },
+          "action": {
+            "$ref": "#/$defs/ActionExpression"
+          },
+          "label": {
+            "type": "string"
+          },
+          "variant": {
+            "type": "string",
+            "enum": [
+              "outline",
+              "ghost",
+              "solid"
+            ]
+          }
+        },
+        "required": [
+          "icon"
+        ],
+        "additionalProperties": false,
+        "description": "Round icon-only button; label is read aloud."
+      },
+      "Pressable": {
+        "type": "object",
+        "properties": {
+          "children": {
+            "type": "array",
+            "items": {}
+          },
+          "action": {
+            "$ref": "#/$defs/ActionExpression"
+          },
+          "selected": {
+            "type": "boolean"
+          },
+          "padding": {
+            "type": "number"
+          },
+          "background": {
+            "type": "string"
+          },
+          "radius": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                  "full"
+                ]
+              },
+              {
+                "type": "number"
+              }
+            ]
+          }
+        },
+        "required": [
+          "children"
+        ],
+        "additionalProperties": false,
+        "description": "Makes any content clickable, such as a tile or a swatch."
+      },
+      "Timer": {
+        "type": "object",
+        "properties": {
+          "seconds": {
+            "type": "number"
+          },
+          "label": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "seconds"
+        ],
+        "additionalProperties": false,
+        "description": "Countdown with start, pause and reset. It counts the bound seconds down to 0, so other statements can react, e.g. $left == 0."
+      },
+      "Input": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": [
+              "string",
+              "number"
+            ]
+          },
+          "label": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "text",
+              "number",
+              "email",
+              "password",
+              "url"
+            ]
+          },
+          "placeholder": {
+            "type": "string"
+          },
+          "rules": {
+            "type": "object",
+            "properties": {
+              "required": {
+                "type": "boolean"
+              },
+              "email": {
+                "type": "boolean"
+              },
+              "url": {
+                "type": "boolean"
+              },
+              "numeric": {
+                "type": "boolean"
+              },
+              "min": {
+                "type": "number"
+              },
+              "max": {
+                "type": "number"
+              },
+              "minLength": {
+                "type": "number"
+              },
+              "maxLength": {
+                "type": "number"
+              },
+              "pattern": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "value"
+        ],
+        "additionalProperties": false,
+        "description": "Text or number field; a number field stores numbers. Optional fifth rules object supports required/email/minLength validation."
+      },
+      "TextArea": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "placeholder": {
+            "type": "string"
+          },
+          "rows": {
+            "type": "number"
+          },
+          "rules": {
+            "type": "object",
+            "properties": {
+              "required": {
+                "type": "boolean"
+              },
+              "email": {
+                "type": "boolean"
+              },
+              "url": {
+                "type": "boolean"
+              },
+              "numeric": {
+                "type": "boolean"
+              },
+              "min": {
+                "type": "number"
+              },
+              "max": {
+                "type": "number"
+              },
+              "minLength": {
+                "type": "number"
+              },
+              "maxLength": {
+                "type": "number"
+              },
+              "pattern": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "value"
+        ],
+        "additionalProperties": false,
+        "description": "Optional fifth rules object supports required and length validation."
+      },
+      "Select": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "options": {
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "string"
+                    },
+                    "label": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "value",
+                    "label"
+                  ],
+                  "additionalProperties": false
+                }
+              ]
+            }
+          },
+          "label": {
+            "type": "string"
+          },
+          "placeholder": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "value",
+          "options"
+        ],
+        "additionalProperties": false,
+        "description": "Dropdown, for long option lists."
+      },
+      "SegmentedControl": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "options": {
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "string"
+                    },
+                    "label": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "value",
+                    "label"
+                  ],
+                  "additionalProperties": false
+                }
+              ]
+            }
+          },
+          "block": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "value",
+          "options"
+        ],
+        "additionalProperties": false,
+        "description": "2 to 4 short choices in a row."
+      },
+      "Slider": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "number"
+          },
+          "min": {
+            "type": "number"
+          },
+          "max": {
+            "type": "number"
+          },
+          "step": {
+            "type": "number"
+          },
+          "label": {
+            "type": "string"
+          },
+          "unit": {
+            "type": "string"
+          },
+          "marks": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "number"
+                },
+                "label": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "value",
+                "label"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "value",
+          "min",
+          "max"
+        ],
+        "additionalProperties": false,
+        "description": "Shows label and value; unit like \"%\" or \"$\" formats the value."
+      },
+      "Checkbox": {
+        "type": "object",
+        "properties": {
+          "checked": {
+            "type": "boolean"
+          },
+          "label": {
+            "type": "string"
+          },
+          "lineThrough": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "checked",
+          "label"
+        ],
+        "additionalProperties": false,
+        "description": "lineThrough strikes the label when checked, for to-do lists."
+      },
+      "RadioGroup": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "options": {
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "string"
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "value",
+                    "label"
+                  ],
+                  "additionalProperties": false
+                }
+              ]
+            }
+          },
+          "label": {
+            "type": "string"
+          },
+          "variant": {
+            "type": "string",
+            "enum": [
+              "list",
+              "pills",
+              "cards"
+            ]
+          }
+        },
+        "required": [
+          "value",
+          "options"
+        ],
+        "additionalProperties": false,
+        "description": "pills for short choices; cards for choices that need a description line."
+      },
+      "DatePicker": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "min": {
+            "type": "string"
+          },
+          "max": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "value"
+        ],
+        "additionalProperties": false,
+        "description": "Dates are \"YYYY-MM-DD\"."
+      },
+      "Form": {
+        "type": "object",
+        "properties": {
+          "children": {
+            "type": "array",
+            "items": {}
+          }
+        },
+        "required": [
+          "children"
+        ],
+        "additionalProperties": false,
+        "description": "Local form with validation/reset. Groups fields; their values go with any @ToAssistant inside."
+      },
+      "Table": {
+        "type": "object",
+        "properties": {
+          "columns": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "rows": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {}
+            }
+          },
+          "controls": {
+            "type": "object",
+            "properties": {
+              "search": {
+                "type": "boolean"
+              },
+              "filterBy": {
+                "maxItems": 6,
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "sort": {
+                "type": "boolean"
+              },
+              "pageSize": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 100
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "columns",
+          "rows"
+        ],
+        "additionalProperties": false,
+        "description": "Each row lists its cells in column order; a cell may be a component. Number columns align right. Optional controls enable local search, filterBy column names, sort and pageSize."
+      },
+      "Chart": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "bar",
+              "line",
+              "area",
+              "pie",
+              "donut",
+              "scatter"
+            ]
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "propertyNames": {
+                "type": "string"
+              },
+              "additionalProperties": {
+                "type": [
+                  "string",
+                  "number"
+                ]
+              }
+            }
+          },
+          "x": {
+            "type": "string"
+          },
+          "series": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "format": {
+            "type": "string",
+            "enum": [
+              "number",
+              "currency",
+              "percent"
+            ]
+          },
+          "currency": {
+            "type": "string"
+          },
+          "stacked": {
+            "type": "boolean"
+          },
+          "height": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "type",
+          "data"
+        ],
+        "additionalProperties": false,
+        "description": "Rows of data; x is the category key (a number key for scatter), series the value keys (default: every number key). percent values are like 45; currency is a code like \"EUR\"."
+      },
+      "Icon": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "size": {
+            "type": "string",
+            "enum": [
+              "sm",
+              "md",
+              "lg"
+            ]
+          },
+          "color": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name"
+        ],
+        "additionalProperties": false,
+        "description": "Decorative lucide icon for stats cards and labels. Not a button; no action or variant."
+      },
+      "Carousel": {
+        "type": "object",
+        "properties": {
+          "children": {
+            "type": "array",
+            "items": {}
+          },
+          "itemWidth": {
+            "type": "number"
+          },
+          "gap": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "children"
+        ],
+        "additionalProperties": false,
+        "description": "Horizontal row that scrolls and snaps, each child an item itemWidth px wide (default 240): photos, cards, options, days."
+      },
+      "Popover": {
+        "type": "object",
+        "properties": {
+          "trigger": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {}
+              }
+            ]
+          },
+          "content": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {}
+              }
+            ]
+          }
+        },
+        "required": [
+          "trigger",
+          "content"
+        ],
+        "additionalProperties": false,
+        "description": "Shows content in a small panel when the trigger is clicked: a definition, a source, details behind an Icon(\"info\", \"sm\")."
+      },
+      "Code": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "language": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "code"
+        ],
+        "additionalProperties": false,
+        "description": "Code block with a copy button."
+      },
+      "Quote": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          },
+          "cite": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "text"
+        ],
+        "additionalProperties": false,
+        "description": "A quotation or a callout with a side rule; cite names the source."
+      },
+      "Math": {
+        "type": "object",
+        "properties": {
+          "tex": {
+            "type": "string"
+          },
+          "inline": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "tex"
+        ],
+        "additionalProperties": false,
+        "description": "LaTeX formula, e.g. Math(\"E = mc^2\"); inline true to sit in a Text list."
+      },
+      "Flashcard": {
+        "type": "object",
+        "properties": {
+          "front": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {}
+              }
+            ]
+          },
+          "back": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {}
+              }
+            ]
+          },
+          "hint": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "front",
+          "back"
+        ],
+        "additionalProperties": false,
+        "description": "Card that flips between front and back when tapped. Put several in a Carousel or Grid."
+      },
+      "Celebration": {
+        "type": "object",
+        "properties": {
+          "when": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "when"
+        ],
+        "additionalProperties": false,
+        "description": "Bursts confetti when its condition turns true, e.g. Celebration($score == 5) at the end of a quiz."
+      },
+      "Markdown": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "text"
+        ],
+        "additionalProperties": false,
+        "description": "Prose with headings, lists, quotes, code and tables."
+      },
+      "Link": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "text",
+          "url"
+        ],
+        "additionalProperties": false,
+        "description": "Opens an http(s) URL in a new tab."
+      }
+    }
+  },
+  "id": "mosaic-widgets-v1"
+}

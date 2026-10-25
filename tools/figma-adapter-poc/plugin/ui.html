@@ -1,0 +1,74 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><style>
+*{box-sizing:border-box}html,body{height:auto;min-height:0}body{margin:0;padding:0;background:#fff;color:#0a192f;font:13px/1.5 "Avenir Next",Avenir,-apple-system,sans-serif}#plugin-content{display:flow-root;padding:20px 22px 14px}button,input,textarea{font:inherit}button{cursor:pointer}button:disabled{opacity:.45;cursor:default}.card{border:1px solid #d8e3f0;border-radius:12px;padding:16px}.paste-card{background:#f8fafc}.card-title{display:flex;align-items:center;gap:8px;font-weight:700;font-size:13px;line-height:20px;margin-bottom:12px}.title-icon{display:grid;place-items:center;width:22px;height:22px;background:#006bff;color:white;border-radius:6px}.import-card .title-icon{color:#536176;background:#f1f5f9}.paste-zone{position:relative;min-height:110px;background:white;border:1px solid #d8e3f0;border-radius:9px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;text-align:center}.paste-zone:has(textarea:focus-visible){outline:2px solid #94a3b8;outline-offset:2px}.paste-zone kbd{font:600 12px "Avenir Next",sans-serif;padding:6px 14px;background:#f1f5f9;border:1px solid #cbd5e1;border-bottom:3px solid #a3afbf;border-radius:6px;margin-bottom:2px}.paste-zone strong{font-size:12px}.paste-zone small{font-size:11px;color:#7c8798}.paste-zone textarea{position:absolute;inset:0;width:100%;height:100%;resize:none;opacity:0;cursor:text;border:0}.paste-zone textarea:disabled{cursor:wait}.import-card{margin-top:18px}.import-card[hidden]{display:none}.dropzone{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;min-height:111px;border:1px dashed #bdcadb;border-radius:8px;background:#f8fafc;color:#6c7c91}.dropzone.is-dragover{border-color:#006bff;background:#eff6ff}.file-row{display:flex;align-items:center;gap:9px;font-size:11px}.file-label{display:inline-block;padding:5px 12px;border:1px solid #cbd5e1;border-radius:6px;color:#0a192f;background:white;font-weight:600;cursor:pointer;box-shadow:0 1px 2px #0000000a}.dropzone small{font-size:10.5px;color:#94a3b8}#file{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden}.report{display:flex;align-items:center;gap:5px;margin-top:12px;border:1px solid #e2e8f0;border-radius:4px;background:#f8fafc;padding:4px 8px;font-size:10px;color:#475569}.plugin-footer{display:flex;align-items:center;gap:7px;border-top:1px solid #f1f5f9;margin-top:18px;padding-top:10px;color:#6b7280;font-size:10.5px}.plugin-footer svg{flex-shrink:0}#status{margin-top:14px;padding:10px 12px;border-radius:7px;background:#f1f5f9;font-size:12px;color:#475569}#status[data-state=error]{background:#fff3f0;color:#ac4337}#status[data-state=success]{background:#eef8f3;color:#24724e}#status strong{display:block}#status[data-state=empty]{display:none}#warnings{font-size:11px;color:#536176;margin-top:8px}#warnings ul{padding-left:16px}.after-action{margin-top:8px;border:1px solid #d8e3f0;padding:6px 10px;border-radius:6px;background:white;color:#475569;font-size:11px}summary{cursor:pointer}:focus-visible{outline:2px solid #006bff;outline-offset:2px}
+</style></head><body><main id="plugin-content">
+<section class="card paste-card" aria-label="Click here, then press ⌘V"><div class="card-title"><span class="title-icon"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clipboard" aria-hidden="true"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"></rect><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path></svg></span>Click here, then press ⌘V</div>
+<div class="paste-zone"><kbd aria-hidden="true">⌘ V</kbd><strong>Press ⌘V · imports automatically</strong><small>In II studio, click Export &gt; Copy for Figma, then paste here.</small><textarea id="payload" aria-label="Paste design on canvas" autocomplete="off" spellcheck="false" autofocus></textarea></div></section>
+<!-- File import and report controls are paused; retain handlers for future re-enabling. -->
+<section class="card import-card" aria-label="Import design file" hidden><div class="card-title"><span class="title-icon"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-upload" aria-hidden="true"><path d="M12 3v12"></path><path d="m17 8-5-5-5 5"></path><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path></svg></span>Import design file</div>
+<div id="dropzone" class="dropzone"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-up" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M12 12v6"></path><path d="m15 15-3-3-3 3"></path></svg><div class="file-row"><label for="file" class="file-label">Choose File</label><span>or drag &amp; drop .json</span></div><small>Use an II studio design file</small><input id="file" type="file" accept=".json,application/json,text/plain" aria-label="Import an II studio design file"></div>
+<button id="report" class="report" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download" aria-hidden="true"><path d="M12 15V3"></path><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="m7 10 5 5 5-5"></path></svg> Import report</button></section>
+<button id="import" class="after-action" hidden disabled>Import again</button><div id="status" role="status" aria-live="polite" data-state="empty"></div>
+<details id="warnings" hidden><summary>Import notes</summary><ul id="warning-list"></ul></details><button id="clear" class="after-action" hidden>Paste another design</button>
+<footer class="plugin-footer"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg> Editable layers. Web interactions are not transferred.</footer></main>
+<script>
+const field=document.getElementById('payload'),button=document.getElementById('import'),statusBox=document.getElementById('status'),clear=document.getElementById('clear');
+const evidence={environment:{userAgent:navigator.userAgent,secureContext:isSecureContext,clipboardAPI:!!navigator.clipboard},events:[]};
+let payload='',busy=false,valid=false,revision='',activeImport='',started=0;
+const id=()=>Date.now().toString(36)+'-'+Math.random().toString(36).slice(2);
+function log(event){evidence.events.push({at:new Date().toISOString(),...event});if(evidence.events.length>100)evidence.events.shift()}
+function state(kind,title,detail=''){statusBox.dataset.state=kind;statusBox.replaceChildren();const strong=document.createElement('strong');strong.textContent=title;statusBox.append(strong);if(detail)statusBox.append(document.createTextNode(detail));button.disabled=busy||!valid;field.disabled=busy;clear.hidden=!payload;clear.disabled=busy;document.getElementById('file').disabled=busy;}
+function warnings(items){const box=document.getElementById('warnings'),list=document.getElementById('warning-list');list.replaceChildren();items.forEach(text=>{const item=document.createElement('li');item.textContent=text;list.append(item)});box.hidden=!items.length;box.open=false}
+function receive(text,transport,types=[]){
+ if(busy)return;
+ payload=text;valid=false;revision=id();button.hidden=true;warnings([]);
+ const bytes=new Blob([text]).size;log({transport,types,bytes});
+ if(bytes>4194304){state('error','Design is too large','The supported limit is 4 MB.');return}
+ if(!text.trim()){state('empty','Copy for Figma in II studio, then paste here.');return}
+ busy=true;started=performance.now();activeImport=revision;
+ state('importing','Checking and importing your design…');
+ parent.postMessage({pluginMessage:{type:'import',payload:text,requestId:activeImport}},'*');
+}
+// Native paste carries clipboard data without requesting clipboard-read access.
+document.addEventListener('paste',event=>{
+ event.preventDefault();if(busy)return;
+ const clipboard=event.clipboardData;
+ if(!clipboard){state('error','Paste was unavailable','Copy for Figma again, then click the paste area and press Command–V.');return}
+ receive(clipboard.getData('text/plain'),'paste-event',[...clipboard.types]);
+ field.value='';
+});
+document.querySelector('.paste-card').onclick=()=>{if(!busy)field.focus()};
+field.focus();
+field.addEventListener('input',()=>{if(!busy&&field.value.trim()){const text=field.value;field.value='';receive(text,'text-input')}});
+async function importFile(file){if(!file||busy)return;if(file.size>4194304){state('error','Design is too large','The supported limit is 4 MB.');return}try{receive(await file.text(),'file')}catch{state('error','Couldn’t read this file','Choose an II studio design JSON file.')}finally{document.getElementById('file').value=''}}
+document.getElementById('file').onchange=event=>void importFile(event.target.files[0]);
+const dropzone=document.getElementById('dropzone');
+dropzone.addEventListener('dragover',event=>{event.preventDefault();if(!busy)dropzone.classList.add('is-dragover')});
+dropzone.addEventListener('dragleave',()=>dropzone.classList.remove('is-dragover'));
+dropzone.addEventListener('drop',event=>{event.preventDefault();dropzone.classList.remove('is-dragover');void importFile(event.dataTransfer&&event.dataTransfer.files[0])});
+
+clear.onclick=()=>{payload='';revision=id();valid=false;button.hidden=true;warnings([]);state('empty','Waiting for a design.');field.focus()};
+button.onclick=()=>{if(busy||!valid)return;busy=true;started=performance.now();activeImport=id();state('importing','Importing your design…');parent.postMessage({pluginMessage:{type:'import',payload,requestId:activeImport}},'*')};
+onmessage=event=>{const msg=event.data&&event.data.pluginMessage;if(!msg||!['valid','success','error'].includes(msg.type))return;
+if(msg.type==='valid'){if(msg.requestId!==revision||busy)return;valid=true;state('ready','Ready to import',msg.title);warnings(msg.warnings||[]);log({type:'valid',title:msg.title,layers:msg.layers,validationMs:msg.validationMs});return}
+if(msg.requestId!==activeImport&&msg.requestId!==revision)return;
+if(msg.type==='success'){if(msg.requestId!==activeImport)return;busy=false;valid=false;button.hidden=false;button.textContent='Import again';const notes=msg.result.warnings||[];state(notes.length?'warning':'success','Imported successfully');warnings(notes);log({...msg,totalImportMs:performance.now()-started});valid=true;button.disabled=false;field.focus();return}
+busy=false;valid=false;state('error','Couldn’t import this design',msg.message);field.focus();log(msg)};
+document.getElementById('report').onclick=()=>{const url=URL.createObjectURL(new Blob([JSON.stringify(evidence,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='ii-studio-figma-import-report.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)};
+// Fit the native window to the visible content, including paste feedback.
+// A separate natural-height wrapper avoids the body retaining the iframe viewport height.
+if(typeof ResizeObserver!=='undefined'){
+ const content=document.getElementById('plugin-content');
+ let lastHeight=0;
+ const fitPanel=()=>{
+  const height=Math.max(224,Math.min(640,Math.ceil(content.getBoundingClientRect().height)));
+  if(height===lastHeight)return;
+  lastHeight=height;
+  parent.postMessage({pluginMessage:{type:'resize',height}},'*');
+ };
+ new ResizeObserver(fitPanel).observe(content);
+ // Feedback and hidden controls can change together after a completed import.
+ new MutationObserver(fitPanel).observe(content,{subtree:true,childList:true,attributes:true,characterData:true});
+ document.fonts?.ready.then(fitPanel);
+ fitPanel();
+}
+</script></body></html>

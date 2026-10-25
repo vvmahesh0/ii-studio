@@ -1,0 +1,873 @@
+{
+  "format": "ii-studio-design",
+  "version": 1,
+  "source": {
+    "library": "modern",
+    "artifactId": "layout-lab"
+  },
+  "viewport": {
+    "width": 720,
+    "height": 460
+  },
+  "components": [],
+  "root": {
+    "id": "lab",
+    "name": "Layout translation lab",
+    "kind": "frame",
+    "x": 0,
+    "y": 0,
+    "width": 720,
+    "height": 460,
+    "sizing": {
+      "width": "fixed",
+      "height": "fixed"
+    },
+    "absolute": false,
+    "style": {
+      "fill": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "radius": 8
+    },
+    "layout": {
+      "axis": "vertical",
+      "padding": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "gap": 12,
+      "align": "start",
+      "justify": "start",
+      "clip": false
+    },
+    "children": [
+      {
+        "id": "row",
+        "name": "Fixed, Fill and Hug",
+        "kind": "frame",
+        "x": 0,
+        "y": 0,
+        "width": 672,
+        "height": 70,
+        "sizing": {
+          "width": "fill",
+          "height": "fixed"
+        },
+        "absolute": false,
+        "style": {
+          "fill": {
+            "r": 0.93,
+            "g": 0.96,
+            "b": 1,
+            "a": 1
+          },
+          "radius": 8
+        },
+        "layout": {
+          "axis": "horizontal",
+          "padding": [
+            8,
+            8,
+            8,
+            8
+          ],
+          "gap": 12,
+          "align": "center",
+          "justify": "start",
+          "clip": true
+        },
+        "children": [
+          {
+            "id": "fixed",
+            "name": "Fixed 120",
+            "kind": "frame",
+            "x": 0,
+            "y": 0,
+            "width": 120,
+            "height": 48,
+            "sizing": {
+              "width": "fixed",
+              "height": "fixed"
+            },
+            "absolute": false,
+            "style": {
+              "fill": {
+                "r": 0.93,
+                "g": 0.96,
+                "b": 1,
+                "a": 1
+              },
+              "radius": 8
+            },
+            "layout": {
+              "axis": "vertical",
+              "padding": [
+                8,
+                8,
+                8,
+                8
+              ],
+              "gap": 12,
+              "align": "center",
+              "justify": "start",
+              "clip": false
+            },
+            "children": [
+              {
+                "id": "fixed-label",
+                "name": "Fixed",
+                "kind": "text",
+                "x": 0,
+                "y": 0,
+                "width": 90,
+                "height": 21,
+                "sizing": {
+                  "width": "fixed",
+                  "height": "fixed"
+                },
+                "absolute": false,
+                "style": {
+                  "fill": {
+                    "r": 0.08,
+                    "g": 0.16,
+                    "b": 0.27,
+                    "a": 1
+                  }
+                },
+                "layout": {
+                  "axis": "none",
+                  "padding": [
+                    8,
+                    8,
+                    8,
+                    8
+                  ],
+                  "gap": 12,
+                  "align": "center",
+                  "justify": "start",
+                  "clip": false
+                },
+                "children": [],
+                "text": "Fixed",
+                "typography": {
+                  "family": "Avenir Next",
+                  "weight": 400,
+                  "size": 14,
+                  "lineHeight": 21,
+                  "letterSpacing": 0,
+                  "align": "left"
+                }
+              }
+            ]
+          },
+          {
+            "id": "fill",
+            "name": "Fill remaining space",
+            "kind": "frame",
+            "x": 0,
+            "y": 0,
+            "width": 240,
+            "height": 48,
+            "sizing": {
+              "width": "fill",
+              "height": "fixed"
+            },
+            "absolute": false,
+            "style": {
+              "fill": {
+                "r": 0.93,
+                "g": 0.96,
+                "b": 1,
+                "a": 1
+              },
+              "radius": 8
+            },
+            "layout": {
+              "axis": "horizontal",
+              "padding": [
+                8,
+                8,
+                8,
+                8
+              ],
+              "gap": 12,
+              "align": "center",
+              "justify": "start",
+              "clip": false
+            },
+            "children": [
+              {
+                "id": "fill-label",
+                "name": "Fill",
+                "kind": "text",
+                "x": 0,
+                "y": 0,
+                "width": 90,
+                "height": 21,
+                "sizing": {
+                  "width": "fixed",
+                  "height": "fixed"
+                },
+                "absolute": false,
+                "style": {
+                  "fill": {
+                    "r": 0.08,
+                    "g": 0.16,
+                    "b": 0.27,
+                    "a": 1
+                  }
+                },
+                "layout": {
+                  "axis": "none",
+                  "padding": [
+                    8,
+                    8,
+                    8,
+                    8
+                  ],
+                  "gap": 12,
+                  "align": "center",
+                  "justify": "start",
+                  "clip": false
+                },
+                "children": [],
+                "text": "Fill",
+                "typography": {
+                  "family": "Avenir Next",
+                  "weight": 400,
+                  "size": 14,
+                  "lineHeight": 21,
+                  "letterSpacing": 0,
+                  "align": "left"
+                }
+              }
+            ]
+          },
+          {
+            "id": "hug",
+            "name": "Hug content",
+            "kind": "frame",
+            "x": 0,
+            "y": 0,
+            "width": 110,
+            "height": 48,
+            "sizing": {
+              "width": "hug",
+              "height": "fixed"
+            },
+            "absolute": false,
+            "style": {
+              "fill": {
+                "r": 0.93,
+                "g": 0.96,
+                "b": 1,
+                "a": 1
+              },
+              "radius": 8
+            },
+            "layout": {
+              "axis": "horizontal",
+              "padding": [
+                8,
+                8,
+                8,
+                8
+              ],
+              "gap": 12,
+              "align": "center",
+              "justify": "start",
+              "clip": false
+            },
+            "children": [
+              {
+                "id": "hug-label",
+                "name": "Hug",
+                "kind": "text",
+                "x": 0,
+                "y": 0,
+                "width": 90,
+                "height": 21,
+                "sizing": {
+                  "width": "fixed",
+                  "height": "fixed"
+                },
+                "absolute": false,
+                "style": {
+                  "fill": {
+                    "r": 0.08,
+                    "g": 0.16,
+                    "b": 0.27,
+                    "a": 1
+                  }
+                },
+                "layout": {
+                  "axis": "none",
+                  "padding": [
+                    8,
+                    8,
+                    8,
+                    8
+                  ],
+                  "gap": 12,
+                  "align": "center",
+                  "justify": "start",
+                  "clip": false
+                },
+                "children": [],
+                "text": "Hug",
+                "typography": {
+                  "family": "Avenir Next",
+                  "weight": 400,
+                  "size": 14,
+                  "lineHeight": 21,
+                  "letterSpacing": 0,
+                  "align": "left"
+                }
+              }
+            ]
+          },
+          {
+            "id": "absolute",
+            "name": "Absolute marker",
+            "kind": "shape",
+            "x": 640,
+            "y": 4,
+            "width": 12,
+            "height": 12,
+            "sizing": {
+              "width": "fixed",
+              "height": "fixed"
+            },
+            "absolute": true,
+            "style": {
+              "fill": {
+                "r": 0,
+                "g": 0.6,
+                "b": 0.5,
+                "a": 1
+              }
+            },
+            "layout": {
+              "axis": "none",
+              "padding": [
+                8,
+                8,
+                8,
+                8
+              ],
+              "gap": 12,
+              "align": "center",
+              "justify": "start",
+              "clip": false
+            },
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": "nested",
+        "name": "Nested vertical stack",
+        "kind": "frame",
+        "x": 0,
+        "y": 0,
+        "width": 672,
+        "height": 130,
+        "sizing": {
+          "width": "fill",
+          "height": "fixed"
+        },
+        "absolute": false,
+        "style": {
+          "fill": {
+            "r": 0.93,
+            "g": 0.96,
+            "b": 1,
+            "a": 1
+          },
+          "radius": 8
+        },
+        "layout": {
+          "axis": "vertical",
+          "padding": [
+            8,
+            8,
+            8,
+            8
+          ],
+          "gap": 12,
+          "align": "start",
+          "justify": "start",
+          "clip": false
+        },
+        "children": [
+          {
+            "id": "label1",
+            "name": "First step",
+            "kind": "text",
+            "x": 0,
+            "y": 0,
+            "width": 90,
+            "height": 21,
+            "sizing": {
+              "width": "fixed",
+              "height": "fixed"
+            },
+            "absolute": false,
+            "style": {
+              "fill": {
+                "r": 0.08,
+                "g": 0.16,
+                "b": 0.27,
+                "a": 1
+              }
+            },
+            "layout": {
+              "axis": "none",
+              "padding": [
+                8,
+                8,
+                8,
+                8
+              ],
+              "gap": 12,
+              "align": "center",
+              "justify": "start",
+              "clip": false
+            },
+            "children": [],
+            "text": "First step",
+            "typography": {
+              "family": "Avenir Next",
+              "weight": 400,
+              "size": 14,
+              "lineHeight": 21,
+              "letterSpacing": 0,
+              "align": "left"
+            }
+          },
+          {
+            "id": "label2",
+            "name": "Second step",
+            "kind": "text",
+            "x": 0,
+            "y": 0,
+            "width": 90,
+            "height": 21,
+            "sizing": {
+              "width": "fixed",
+              "height": "fixed"
+            },
+            "absolute": false,
+            "style": {
+              "fill": {
+                "r": 0.08,
+                "g": 0.16,
+                "b": 0.27,
+                "a": 1
+              }
+            },
+            "layout": {
+              "axis": "none",
+              "padding": [
+                8,
+                8,
+                8,
+                8
+              ],
+              "gap": 12,
+              "align": "center",
+              "justify": "start",
+              "clip": false
+            },
+            "children": [],
+            "text": "Second step",
+            "typography": {
+              "family": "Avenir Next",
+              "weight": 400,
+              "size": 14,
+              "lineHeight": 21,
+              "letterSpacing": 0,
+              "align": "left"
+            }
+          }
+        ]
+      },
+      {
+        "id": "grid",
+        "name": "Measured two-row grid",
+        "kind": "frame",
+        "x": 0,
+        "y": 0,
+        "width": 672,
+        "height": 140,
+        "sizing": {
+          "width": "fill",
+          "height": "fixed"
+        },
+        "absolute": false,
+        "style": {
+          "fill": {
+            "r": 0.93,
+            "g": 0.96,
+            "b": 1,
+            "a": 1
+          },
+          "radius": 8
+        },
+        "layout": {
+          "axis": "none",
+          "padding": [
+            8,
+            8,
+            8,
+            8
+          ],
+          "gap": 12,
+          "align": "center",
+          "justify": "start",
+          "clip": false
+        },
+        "children": [
+          {
+            "id": "cell0",
+            "name": "Grid cell 1",
+            "kind": "frame",
+            "x": 8,
+            "y": 8,
+            "width": 300,
+            "height": 50,
+            "sizing": {
+              "width": "fixed",
+              "height": "fixed"
+            },
+            "absolute": false,
+            "style": {
+              "fill": {
+                "r": 0.93,
+                "g": 0.96,
+                "b": 1,
+                "a": 1
+              },
+              "radius": 8
+            },
+            "layout": {
+              "axis": "vertical",
+              "padding": [
+                8,
+                8,
+                8,
+                8
+              ],
+              "gap": 12,
+              "align": "center",
+              "justify": "start",
+              "clip": false
+            },
+            "children": [
+              {
+                "id": "cell-label0",
+                "name": "Cell 1",
+                "kind": "text",
+                "x": 0,
+                "y": 0,
+                "width": 90,
+                "height": 21,
+                "sizing": {
+                  "width": "fixed",
+                  "height": "fixed"
+                },
+                "absolute": false,
+                "style": {
+                  "fill": {
+                    "r": 0.08,
+                    "g": 0.16,
+                    "b": 0.27,
+                    "a": 1
+                  }
+                },
+                "layout": {
+                  "axis": "none",
+                  "padding": [
+                    8,
+                    8,
+                    8,
+                    8
+                  ],
+                  "gap": 12,
+                  "align": "center",
+                  "justify": "start",
+                  "clip": false
+                },
+                "children": [],
+                "text": "Cell 1",
+                "typography": {
+                  "family": "Avenir Next",
+                  "weight": 400,
+                  "size": 14,
+                  "lineHeight": 21,
+                  "letterSpacing": 0,
+                  "align": "left"
+                }
+              }
+            ]
+          },
+          {
+            "id": "cell1",
+            "name": "Grid cell 2",
+            "kind": "frame",
+            "x": 332,
+            "y": 8,
+            "width": 300,
+            "height": 50,
+            "sizing": {
+              "width": "fixed",
+              "height": "fixed"
+            },
+            "absolute": false,
+            "style": {
+              "fill": {
+                "r": 0.93,
+                "g": 0.96,
+                "b": 1,
+                "a": 1
+              },
+              "radius": 8
+            },
+            "layout": {
+              "axis": "vertical",
+              "padding": [
+                8,
+                8,
+                8,
+                8
+              ],
+              "gap": 12,
+              "align": "center",
+              "justify": "start",
+              "clip": false
+            },
+            "children": [
+              {
+                "id": "cell-label1",
+                "name": "Cell 2",
+                "kind": "text",
+                "x": 0,
+                "y": 0,
+                "width": 90,
+                "height": 21,
+                "sizing": {
+                  "width": "fixed",
+                  "height": "fixed"
+                },
+                "absolute": false,
+                "style": {
+                  "fill": {
+                    "r": 0.08,
+                    "g": 0.16,
+                    "b": 0.27,
+                    "a": 1
+                  }
+                },
+                "layout": {
+                  "axis": "none",
+                  "padding": [
+                    8,
+                    8,
+                    8,
+                    8
+                  ],
+                  "gap": 12,
+                  "align": "center",
+                  "justify": "start",
+                  "clip": false
+                },
+                "children": [],
+                "text": "Cell 2",
+                "typography": {
+                  "family": "Avenir Next",
+                  "weight": 400,
+                  "size": 14,
+                  "lineHeight": 21,
+                  "letterSpacing": 0,
+                  "align": "left"
+                }
+              }
+            ]
+          },
+          {
+            "id": "cell2",
+            "name": "Grid cell 3",
+            "kind": "frame",
+            "x": 8,
+            "y": 70,
+            "width": 300,
+            "height": 50,
+            "sizing": {
+              "width": "fixed",
+              "height": "fixed"
+            },
+            "absolute": false,
+            "style": {
+              "fill": {
+                "r": 0.93,
+                "g": 0.96,
+                "b": 1,
+                "a": 1
+              },
+              "radius": 8
+            },
+            "layout": {
+              "axis": "vertical",
+              "padding": [
+                8,
+                8,
+                8,
+                8
+              ],
+              "gap": 12,
+              "align": "center",
+              "justify": "start",
+              "clip": false
+            },
+            "children": [
+              {
+                "id": "cell-label2",
+                "name": "Cell 3",
+                "kind": "text",
+                "x": 0,
+                "y": 0,
+                "width": 90,
+                "height": 21,
+                "sizing": {
+                  "width": "fixed",
+                  "height": "fixed"
+                },
+                "absolute": false,
+                "style": {
+                  "fill": {
+                    "r": 0.08,
+                    "g": 0.16,
+                    "b": 0.27,
+                    "a": 1
+                  }
+                },
+                "layout": {
+                  "axis": "none",
+                  "padding": [
+                    8,
+                    8,
+                    8,
+                    8
+                  ],
+                  "gap": 12,
+                  "align": "center",
+                  "justify": "start",
+                  "clip": false
+                },
+                "children": [],
+                "text": "Cell 3",
+                "typography": {
+                  "family": "Avenir Next",
+                  "weight": 400,
+                  "size": 14,
+                  "lineHeight": 21,
+                  "letterSpacing": 0,
+                  "align": "left"
+                }
+              }
+            ]
+          },
+          {
+            "id": "cell3",
+            "name": "Grid cell 4",
+            "kind": "frame",
+            "x": 332,
+            "y": 70,
+            "width": 300,
+            "height": 50,
+            "sizing": {
+              "width": "fixed",
+              "height": "fixed"
+            },
+            "absolute": false,
+            "style": {
+              "fill": {
+                "r": 0.93,
+                "g": 0.96,
+                "b": 1,
+                "a": 1
+              },
+              "radius": 8
+            },
+            "layout": {
+              "axis": "vertical",
+              "padding": [
+                8,
+                8,
+                8,
+                8
+              ],
+              "gap": 12,
+              "align": "center",
+              "justify": "start",
+              "clip": false
+            },
+            "children": [
+              {
+                "id": "cell-label3",
+                "name": "Cell 4",
+                "kind": "text",
+                "x": 0,
+                "y": 0,
+                "width": 90,
+                "height": 21,
+                "sizing": {
+                  "width": "fixed",
+                  "height": "fixed"
+                },
+                "absolute": false,
+                "style": {
+                  "fill": {
+                    "r": 0.08,
+                    "g": 0.16,
+                    "b": 0.27,
+                    "a": 1
+                  }
+                },
+                "layout": {
+                  "axis": "none",
+                  "padding": [
+                    8,
+                    8,
+                    8,
+                    8
+                  ],
+                  "gap": 12,
+                  "align": "center",
+                  "justify": "start",
+                  "clip": false
+                },
+                "children": [],
+                "text": "Cell 4",
+                "typography": {
+                  "family": "Avenir Next",
+                  "weight": 400,
+                  "size": 14,
+                  "lineHeight": 21,
+                  "letterSpacing": 0,
+                  "align": "left"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "warnings": []
+}

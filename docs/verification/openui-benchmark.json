@@ -1,0 +1,67 @@
+{
+  "recordedAt": "2026-10-16T12:16:28.576Z",
+  "model": "Gemini 3.8 Flash",
+  "note": "First content is measured by server parsing; browser paint is measured separately in the UI. Setup time is outside these warmed request measurements.",
+  "results": [
+    {
+      "name": "pricing",
+      "prompt": "Create a pricing section with Starter $12, Pro $29, and Team $79 monthly plans, three features each, and choose-plan buttons. Highlight Pro.",
+      "firstDeltaMs": 5172,
+      "completeMs": 7837,
+      "type": "complete",
+      "program": "root = Col([header, plans], 6)\nheader = Col([Title(\"Simple, transparent pricing\", \"xl\"), Text(\"Choose the plan that fits your needs. Cancel anytime.\", \"sm\", \"muted\")], 2)\nplans = Grid([starterCard, proCard, teamCard], 3, 200, 4)\nstarterCard = Card([starterHeader, starterPrice, starterList, starterBtn], \"outline\", 6, 4)\nstarterHeader = Col([Title(\"Starter\", \"md\"), Caption(\"For individuals and small tests\")], 1)\nstarterPrice = Row([Title(\"$12\", \"2xl\"), Caption(\"/month\")], 1, \"end\")\nstarterList = List([\"Up to 3 projects\", \"Basic analytics\", \"Community support\"], \"bullet\")\nstarterBtn = Button(\"Choose Starter\", @ToAssistant(\"Selected Starter plan\"), \"outline\", null, \"md\", null, false, true)\nproCard = Card([proHeader, proPrice, proList, proBtn], \"soft\", 6, 4)\nproHeader = Row([Col([Title(\"Pro\", \"md\"), Caption(\"For growing creators\")], 1), Spacer(), Badge(\"Popular\", \"purple\")], 2, \"start\", \"between\")\nproPrice = Row([Title(\"$29\", \"2xl\"), Caption(\"/month\")], 1, \"end\")\nproList = List([\"Unlimited projects\", \"Advanced analytics\", \"Priority email support\"], \"bullet\")\nproBtn = Button(\"Choose Pro\", @ToAssistant(\"Selected Pro plan\"), \"solid\", \"primary\", \"md\", null, false, true)\nteamCard = Card([teamHeader, teamPrice, teamList, teamBtn], \"outline\", 6, 4)\nteamHeader = Col([Title(\"Team\", \"md\"), Caption(\"For collaborative organizations\")], 1)\nteamPrice = Row([Title(\"$79\", \"2xl\"), Caption(\"/month\")], 1, \"end\")\nteamList = List([\"Unlimited team members\", \"Dedicated workspaces\", \"24/7 phone support\"], \"bullet\")\nteamBtn = Button(\"Choose Team\", @ToAssistant(\"Selected Team plan\"), \"outline\", null, \"md\", null, false, true)",
+      "firstContentMs": 5288,
+      "elapsedMs": 7829
+    },
+    {
+      "name": "stats",
+      "prompt": "Create three stats cards: monthly revenue $48,200 up 12%, active customers 2,840 up 8%, and churn 1.8% down 0.3 points. Add trend badges.",
+      "firstDeltaMs": 3316,
+      "completeMs": 4731,
+      "type": "complete",
+      "program": "root = Col([heading, statsGrid], 5)\nheading = Col([Title(\"Key Performance Metrics\", \"xl\"), Text(\"Performance summary for the current month compared to last month.\", \"sm\", \"muted\")], 1)\nstatsGrid = Grid([revenueCard, customersCard, churnCard], 3, 180, 4)\nrevenueCard = Card([revenueTop, revenueValue], \"outline\", 6, 3)\nrevenueTop = Row([Caption(\"Monthly revenue\"), Spacer(), Badge(\"+12%\", \"success\")], 2, \"center\", \"between\")\nrevenueValue = Title(\"$48,200\", \"2xl\")\ncustomersCard = Card([customersTop, customersValue], \"outline\", 6, 3)\ncustomersTop = Row([Caption(\"Active customers\"), Spacer(), Badge(\"+8%\", \"success\")], 2, \"center\", \"between\")\ncustomersValue = Title(\"2,840\", \"2xl\")\nchurnCard = Card([churnTop, churnValue], \"outline\", 6, 3)\nchurnTop = Row([Caption(\"Churn rate\"), Spacer(), Badge(\"-0.3 pts\", \"success\")], 2, \"center\", \"between\")\nchurnValue = Title(\"1.8%\", \"2xl\")",
+      "firstContentMs": 3592,
+      "elapsedMs": 4726
+    },
+    {
+      "name": "form",
+      "prompt": "Create a compact contact form with name, email, a project type selector, message, and Send enquiry button.",
+      "firstDeltaMs": 2730,
+      "completeMs": 4093,
+      "type": "complete",
+      "program": "root = Col([heading, formCard], 5)\nheading = Col([Title(\"Get in touch\", \"xl\"), Text(\"Tell us about your project and we will respond within 24 hours.\", \"sm\", \"muted\")], 1)\nformCard = Card([contactForm], \"outline\", 6, 4)\ncontactForm = Form([nameInput, emailInput, projectSelect, messageArea, submitBtn])\n$name = \"\"\nnameInput = Input($name, \"Your name\", \"text\", \"Alex Morgan\")\n$email = \"\"\nemailInput = Input($email, \"Email address\", \"text\", \"alex@example.com\")\n$projectType = \"Web Design\"\nprojectSelect = Select($projectType, [\"Web Design\", \"Mobile App\", \"Branding\", \"Consulting\"], \"Project type\", \"Select a service\")\n$message = \"\"\nmessageArea = TextArea($message, \"Project details\", \"Share your goals, timeline, and budget...\", 4)\nsubmitBtn = Button(\"Send enquiry\", @ToAssistant(\"Send enquiry\"), \"solid\", \"primary\", \"md\", null, false, true)",
+      "firstContentMs": 2879,
+      "elapsedMs": 4088
+    },
+    {
+      "name": "chart",
+      "prompt": "Create a compact revenue widget with total revenue, a growth badge, and a line chart for the last six months. Use sample data.",
+      "firstDeltaMs": 7847,
+      "completeMs": 8873,
+      "type": "complete",
+      "program": "root = Col([heading, revenueCard], 5)\nheading = Title(\"Revenue overview\", \"xl\")\nrevenueCard = Card([cardHeader, totalAmount, chart], \"outline\", 6, 4)\ncardHeader = Row([Caption(\"Last six months\"), Spacer(), Badge(\"+14.2% vs prev period\", \"success\")], 3, \"center\", \"between\")\ntotalAmount = Title(\"$184,500\", \"2xl\")\nchart = Chart(\"line\", [{month: \"May\", revenue: 24500}, {month: \"Jun\", revenue: 27200}, {month: \"Jul\", revenue: 29800}, {month: \"Aug\", revenue: 32400}, {month: \"Sep\", revenue: 34100}, {month: \"Oct\", revenue: 36500}], \"month\", [\"revenue\"], \"currency\", \"USD\", false, 200)",
+      "firstContentMs": 7946,
+      "elapsedMs": 8869
+    },
+    {
+      "name": "table",
+      "prompt": "Create a recent orders widget with a heading and a table of four sample orders with customer, product, amount, and payment status.",
+      "firstDeltaMs": 3193,
+      "completeMs": 4454,
+      "type": "complete",
+      "program": "root = Col([heading, tableCard], 5)\nheading = Col([Title(\"Recent orders\", \"xl\"), Text(\"Overview of customer purchases from the past 24 hours.\", \"sm\", \"muted\")], 1)\ntableCard = Card([ordersTable], \"outline\", 5, 3)\nordersTable = Table([\"Customer\", \"Product\", \"Amount\", \"Status\"], [orderRow1, orderRow2, orderRow3, orderRow4])\norderRow1 = [\"Sophia Patel\", \"Pro Annual Subscription\", \"$290.00\", Badge(\"Paid\", \"success\")]\norderRow2 = [\"Marcus Vance\", \"Design System UI Kit\", \"$79.00\", Badge(\"Paid\", \"success\")]\norderRow3 = [\"Elena Rostova\", \"Cloud Hosting Add-on\", \"$35.00\", Badge(\"Pending\", \"warning\")]\norderRow4 = [\"David Kim\", \"Custom Domain Transfer\", \"$15.00\", Badge(\"Refunded\", \"neutral\")]",
+      "firstContentMs": 3369,
+      "elapsedMs": 4449
+    },
+    {
+      "name": "refinement",
+      "prompt": "Change the Pro price to $39 and add a badge saying Best value. Keep all three plans and the rest of their content.",
+      "firstDeltaMs": 3037,
+      "completeMs": 5526,
+      "type": "complete",
+      "program": "root = Col([header, plans], 6)\nheader = Col([Title(\"Simple, transparent pricing\", \"xl\"), Text(\"Choose the plan that fits your needs. Cancel anytime.\", \"sm\", \"muted\")], 2)\nplans = Grid([starterCard, proCard, teamCard], 3, 200, 4)\nstarterCard = Card([starterHeader, starterPrice, starterList, starterBtn], \"outline\", 6, 4)\nstarterHeader = Col([Title(\"Starter\", \"md\"), Caption(\"For individuals and small tests\")], 1)\nstarterPrice = Row([Title(\"$12\", \"2xl\"), Caption(\"/month\")], 1, \"end\")\nstarterList = List([\"Up to 3 projects\", \"Basic analytics\", \"Community support\"], \"bullet\")\nstarterBtn = Button(\"Choose Starter\", @ToAssistant(\"Selected Starter plan\"), \"outline\", null, \"md\", null, false, true)\nproCard = Card([proHeader, proPrice, proList, proBtn], \"soft\", 6, 4)\nproHeader = Row([Col([Title(\"Pro\", \"md\"), Caption(\"For growing creators\")], 1), Spacer(), Badge(\"Best value\", \"purple\")], 2, \"start\", \"between\")\nproPrice = Row([Title(\"$39\", \"2xl\"), Caption(\"/month\")], 1, \"end\")\nproList = List([\"Unlimited projects\", \"Advanced analytics\", \"Priority email support\"], \"bullet\")\nproBtn = Button(\"Choose Pro\", @ToAssistant(\"Selected Pro plan\"), \"solid\", \"primary\", \"md\", null, false, true)\nteamCard = Card([teamHeader, teamPrice, teamList, teamBtn], \"outline\", 6, 4)\nteamHeader = Col([Title(\"Team\", \"md\"), Caption(\"For collaborative organizations\")], 1)\nteamPrice = Row([Title(\"$79\", \"2xl\"), Caption(\"/month\")], 1, \"end\")\nteamList = List([\"Unlimited team members\", \"Dedicated workspaces\", \"24/7 phone support\"], \"bullet\")\nteamBtn = Button(\"Choose Team\", @ToAssistant(\"Selected Team plan\"), \"outline\", null, \"md\", null, false, true)",
+      "firstContentMs": 3264,
+      "elapsedMs": 5522
+    }
+  ]
+}

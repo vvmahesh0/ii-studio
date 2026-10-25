@@ -1,0 +1,37 @@
+[
+  {
+    "id": "modern-dashboard",
+    "name": "Subscription analytics",
+    "library": "modern",
+    "origin": "Actual analytics output in docs/verification/design-quality/baseline.json; enabled existing table search/filter controls and changed one existing button to primary. No model call.",
+    "program": "root = Page([shell])\nshell = AppShell(\"Pulse\", navGroups, \"Subscription Analytics\", [kpis, chartsSection, tableSection], userProfile)\nnavGroups = [navGroupMain, navGroupBilling]\nnavGroupMain = {id: \"analytics\", label: \"Analytics\", items: [navOverview, navSubscriptions, navCustomers]}\nnavOverview = {id: \"overview\", label: \"Overview\", icon: \"layout-dashboard\"}\nnavSubscriptions = {id: \"subscriptions\", label: \"Subscriptions\", icon: \"credit-card\"}\nnavCustomers = {id: \"customers\", label: \"Customers\", icon: \"users\"}\nnavGroupBilling = {id: \"settings\", label: \"Administration\", items: [navPlans, navSettings]}\nnavPlans = {id: \"plans\", label: \"Pricing Plans\", icon: \"layers\"}\nnavSettings = {id: \"settings-item\", label: \"Settings\", icon: \"settings\"}\nuserProfile = {name: \"Sarah Lin\", detail: \"Growth Lead\"}\nkpis = MetricCards([mrrMetric, accountsMetric, conversionMetric, churnMetric], \"mrr\")\nmrrMetric = {id: \"mrr\", label: \"Monthly Recurring Revenue\", value: \"$64,280\", trend: \"+14.2% vs last month\"}\naccountsMetric = {id: \"accounts\", label: \"Active Subscriptions\", value: \"1,842\", description: \"Across all tiers\"}\nconversionMetric = {id: \"conversion\", label: \"Trial Conversion\", value: \"4.8%\", trend: \"+0.6% this cycle\"}\nchurnMetric = {id: \"churn\", label: \"Monthly Churn Rate\", value: \"1.9%\", description: \"-0.3% vs target\"}\nchartsSection = DashboardSection([chartCard], \"Revenue Performance\", \"Historical monthly recurring revenue growth over the past two quarters\")\nchartCard = Card([chart], \"MRR Trend (USD)\", \"May - Oct 2026\")\nchart = AreaChart(chartLabels, [revenueSeries], \"Month\", \"Revenue ($k)\")\nchartLabels = [\"May\", \"Jun\", \"Jul\", \"Aug\", \"Sep\", \"Oct\"]\nrevenueSeries = Series(\"MRR ($k)\", [48.2, 51.5, 54.0, 58.6, 61.2, 64.3])\ntableSection = DashboardSection([customersTable], \"Recent Customer Activity\", \"Latest plan activations and status changes\", tableActions)\ntableActions = Buttons([exportButton, filterButton])\nexportButton = Button(\"Export CSV\", null, \"outline\", \"sm\")\nfilterButton = Button(\"Add customer\", null, \"default\", \"sm\")\ncustomersTable = Table(tableColumns, tableRows, 5, {search:true,filterBy:[\"Status\"],sort:true,pageSize:5})\ntableColumns = [colCustomer, colPlan, colBilling, colAmount, colStatus]\ncolCustomer = TableColumn(\"Customer\", \"string\")\ncolPlan = TableColumn(\"Plan\", \"string\")\ncolBilling = TableColumn(\"Cycle\", \"string\")\ncolAmount = TableColumn(\"Amount\", \"string\")\ncolStatus = TableColumn(\"Status\", \"string\")\ntableRows = [row1, row2, row3, row4, row5]\nrow1 = [\"Acrobatics Studio\", \"Scale\", \"Annual\", \"$4,800/yr\", Badge(\"Active\", \"default\")]\nrow2 = [\"Beacon Labs\", \"Pro\", \"Monthly\", \"$290/mo\", Badge(\"Active\", \"default\")]\nrow3 = [\"Cloudline Inc\", \"Enterprise\", \"Annual\", \"$12,000/yr\", Badge(\"Active\", \"secondary\")]\nrow4 = [\"Delta Peak AI\", \"Pro\", \"Monthly\", \"$290/mo\", Badge(\"Trial\", \"outline\")]\nrow5 = [\"Echo Media Co\", \"Starter\", \"Monthly\", \"$79/mo\", Badge(\"Past Due\", \"destructive\")]"
+  },
+  {
+    "id": "default-form",
+    "name": "Project enquiry",
+    "library": "default",
+    "origin": "Supported Default form from local-interactions/fixtures.json, with registered descriptive text and information card added deterministically.",
+    "program": "root = Col([Title(\"Contact details\",\"lg\"), Text(\"Tell the team about your next project.\",\"sm\",\"muted\"), form, info], 5)\nform = Form([Input(\"Maya\",\"Name\",\"text\",\"Your name\",{required:true}),Input(\"\",\"Email\",\"email\",\"you@example.com\",{required:true,email:true}),TextArea(\"\",\"Message\",\"Your message\",3,{required:true}),Row([Button(\"Submit\",null,\"solid\",null,null,null,false,false,\"submit\"),Button(\"Reset\",null,\"outline\",null,null,null,false,false,\"reset\")],3,\"center\")])\ninfo = Card([Title(\"What happens next\",\"md\"),Text(\"Our team will review your message within two working days.\",\"sm\")],\"soft\",5,3)"
+  },
+  {
+    "id": "component-cards",
+    "name": "Reusable KPI experiment",
+    "library": "modern",
+    "origin": "Controlled equal-structure version of supported MetricCards for component versus independent-frame comparison.",
+    "program": "root = Page([metrics])\nmetrics = MetricCards([{id:\"revenue\",label:\"Revenue\",value:\"$64,280\"},{id:\"accounts\",label:\"Accounts\",value:\"1,842\"},{id:\"conversion\",label:\"Conversion\",value:\"4.8%\"}])"
+  },
+  {
+    "id": "placeholder-modern",
+    "name": "Image placeholders · Modern",
+    "library": "modern",
+    "origin": "Local image-placeholder coverage; no model or external image request.",
+    "program": "root = Page([heading, cards, avatar])\nheading = Heading(\"Image placeholders\", \"h1\", \"lg\")\ncards = Grid([hotel, product, portrait], 3, 180, 4)\nhotel = Card([ImagePlaceholder(\"Hotel photograph\", \"landscape\")], \"Travel\")\nproduct = Card([ImagePlaceholder(\"Product image\", \"square\")], \"Products\")\nportrait = Card([ImagePlaceholder(\"Portrait photograph\", \"portrait\")], \"People\")\navatar = ImagePlaceholder(\"Profile photo\", \"avatar\")"
+  },
+  {
+    "id": "placeholder-default",
+    "name": "Image placeholders · Default",
+    "library": "default",
+    "origin": "Local image-placeholder coverage; no model or external image request.",
+    "program": "root = Col([Title(\"Image placeholders\", \"lg\"), cards, ImagePlaceholder(\"Profile photo\", \"avatar\")], 4)\ncards = Grid([hotel, product, portrait], 3, 180, 4)\nhotel = Card([Title(\"Travel\", \"md\"), ImagePlaceholder(\"Hotel photograph\", \"landscape\")])\nproduct = Card([Title(\"Products\", \"md\"), ImagePlaceholder(\"Product image\", \"square\")])\nportrait = Card([Title(\"People\", \"md\"), ImagePlaceholder(\"Portrait photograph\", \"portrait\")])"
+  }
+]

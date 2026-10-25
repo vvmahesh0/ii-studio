@@ -1,0 +1,104 @@
+{
+  "date": "2026-10-24",
+  "method": "Actual loopback generation API routes; synthetic prompts; single runs; firstOutput is server-event arrival, not browser paint. Initial malformed flow harness requests were excluded and rerun correctly.",
+  "results": [
+    {
+      "provider": "codex",
+      "mode": "openui",
+      "refine": false,
+      "status": 200,
+      "firstOutputMs": 15495,
+      "elapsedMs": 17456,
+      "outcome": "complete"
+    },
+    {
+      "provider": "codex",
+      "mode": "openui",
+      "refine": true,
+      "status": 200,
+      "firstOutputMs": 18222,
+      "elapsedMs": 20445,
+      "outcome": "complete"
+    },
+    {
+      "provider": "claude",
+      "mode": "openui",
+      "refine": false,
+      "status": 200,
+      "firstOutputMs": null,
+      "elapsedMs": 2883,
+      "outcome": "error",
+      "error": "The CLI could not finish. Check its authentication, model access and usage limits."
+    },
+    {
+      "provider": "antigravity",
+      "mode": "openui",
+      "refine": false,
+      "status": 200,
+      "firstOutputMs": 24718,
+      "elapsedMs": 25270,
+      "outcome": "complete"
+    },
+    {
+      "provider": "antigravity",
+      "mode": "openui",
+      "refine": true,
+      "status": 200,
+      "firstOutputMs": 2457,
+      "elapsedMs": 3162,
+      "outcome": "complete"
+    },
+    {
+      "provider": "codex",
+      "mode": "flowchart",
+      "refine": false,
+      "status": 200,
+      "firstOutputMs": 16172,
+      "elapsedMs": 18234,
+      "outcome": "complete"
+    },
+    {
+      "provider": "codex",
+      "mode": "flowchart",
+      "refine": true,
+      "status": 200,
+      "firstOutputMs": 11127,
+      "elapsedMs": 13453,
+      "outcome": "complete"
+    },
+    {
+      "provider": "antigravity",
+      "mode": "flowchart",
+      "refine": false,
+      "status": 200,
+      "firstOutputMs": 25485,
+      "elapsedMs": 25588,
+      "outcome": "complete"
+    },
+    {
+      "provider": "antigravity",
+      "mode": "flowchart",
+      "refine": true,
+      "status": 200,
+      "firstOutputMs": 2608,
+      "elapsedMs": 2736,
+      "outcome": "complete"
+    },
+    {
+      "provider": "antigravity",
+      "theme": "default",
+      "status": 200,
+      "outcome": "complete",
+      "firstContentMs": 18595,
+      "elapsedMs": 18722
+    },
+    {
+      "provider": "codex",
+      "theme": "default",
+      "status": 200,
+      "outcome": "complete",
+      "firstContentMs": 13128,
+      "elapsedMs": 14985
+    }
+  ]
+}

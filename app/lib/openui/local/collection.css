@@ -1,0 +1,112 @@
+.ii-local-collection {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.ii-collection-toolbar {
+  display: flex;
+  align-items: end;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.ii-collection-toolbar label,
+.ii-list-sort {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 500;
+}
+.ii-collection-toolbar input,
+.ii-collection-toolbar select,
+.ii-list-sort select {
+  min-height: 36px;
+  max-width: 100%;
+  border: 1px solid var(--iui-border, var(--border));
+  background: var(--iui-canvas, var(--background));
+  color: inherit;
+  border-radius: 7px;
+  padding: 7px 10px;
+  font: inherit;
+}
+.ii-collection-toolbar input {
+  width: 240px;
+}
+.ii-collection-toolbar button,
+.ii-collection-pages button {
+  border: 1px solid var(--iui-border, var(--border));
+  border-radius: 7px;
+  padding: 8px 10px;
+  background: var(--iui-canvas, var(--background));
+  color: inherit;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+.ii-collection-toolbar button:disabled,
+.ii-collection-pages button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.ii-collection-toolbar :focus-visible,
+.ii-collection-pages :focus-visible,
+.ii-local-collection th button:focus-visible {
+  outline: 2px solid var(--iui-focus, var(--ring));
+  outline-offset: 2px;
+}
+.ii-local-collection th button {
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: inherit;
+  cursor: pointer;
+}
+.ii-collection-pages {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: end;
+  gap: 12px;
+  font-size: 12px;
+}
+.ii-collection-pages > span:first-child {
+  margin-right: auto;
+}
+.ii-data-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.ii-data-list li {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--iui-border, var(--border));
+}
+.ii-data-list strong {
+  font-weight: 600;
+}
+.ii-data-list p {
+  margin: 4px 0 0;
+  font-size: 13px;
+  opacity: 0.75;
+}
+.ii-data-list li > span {
+  font-size: 12px;
+  white-space: nowrap;
+}
+.ii-list-sort {
+  align-self: flex-end;
+}
+.ii-field-error {
+  color: var(--iui-danger, var(--destructive));
+  font-size: 12px;
+}
+.ii-form-valid {
+  font-size: 12px;
+  color: var(--iui-muted, var(--muted-foreground));
+}
+.ii-local-form { display: flex; flex-direction: column; gap: 12px; }

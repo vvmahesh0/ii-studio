@@ -1,0 +1,64 @@
+{
+  "name": "ii-studio",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "npm run figma:build && node scripts/prepare-flow-assets.mjs && NEXT_TELEMETRY_DISABLED=1 next dev --hostname 127.0.0.1",
+    "build": "NEXT_TELEMETRY_DISABLED=1 next build",
+    "start": "NEXT_TELEMETRY_DISABLED=1 next start --hostname 127.0.0.1",
+    "lint": "eslint",
+    "openui:generate": "openui generate app/lib/openui/library.ts --spec --out app/lib/openui/generated/spec.json --no-telemetry && openui generate app/lib/openui/modern/library.ts --spec --out app/lib/openui/modern/generated/spec.json --no-telemetry",
+    "prebuild": "npm run figma:build && node scripts/prepare-flow-assets.mjs && npm run openui:generate",
+    "test": "node --experimental-strip-types --test tests/*.test.mjs",
+    "figma:build": "node tools/figma-adapter-poc/build.mjs",
+    "setup": "node scripts/setup.mjs",
+    "check": "npm run test && npm run lint && next typegen && tsc --noEmit"
+  },
+  "dependencies": {
+    "@openuidev/lang-core": "1.0.1",
+    "@openuidev/react-lang": "1.0.1",
+    "@xyflow/react": "^12.12.0",
+    "class-variance-authority": "^0.7.1",
+    "cn": "^0.5.0",
+    "date-fns": "^4.4.0",
+    "elkjs": "^0.12.0",
+    "embla-carousel-react": "^8.6.0",
+    "html-to-image": "1.11.11",
+    "idb": "^8.0.4",
+    "katex": "^0.19.0",
+    "lucide-react": "^1.48.0",
+    "next": "16.4.2",
+    "radix-ui": "^1.8.1",
+    "react": "19.2.8",
+    "react-day-picker": "^10.0.2",
+    "react-dom": "19.2.8",
+    "react-markdown": "^10.1.0",
+    "recharts": "^3.8.0",
+    "remark-gfm": "^4.0.1",
+    "vaul": "^1.1.2",
+    "zod": "^4.6.6"
+  },
+  "devDependencies": {
+    "@openuidev/cli": "0.6.0",
+    "@tailwindcss/postcss": "^4",
+    "@types/katex": "^0.16.8",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "esbuild": "0.25.12",
+    "eslint": "^9",
+    "eslint-config-next": "16.4.2",
+    "fake-indexeddb": "^6.2.6",
+    "fengari": "^0.1.5",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  },
+  "author": {
+    "name": "Mahesh V V",
+    "url": "https://github.com/vvmahesh0"
+  },
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">=24"
+  }
+}

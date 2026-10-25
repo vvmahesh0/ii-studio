@@ -1,0 +1,216 @@
+.ii-modern {
+  --background: #ffffff;
+  --foreground: #172a43;
+  --card: #ffffff;
+  --card-foreground: #172a43;
+  --popover: #ffffff;
+  --popover-foreground: #172a43;
+  --primary: #0868ff;
+  --primary-foreground: #ffffff;
+  --secondary: #edf4ff;
+  --secondary-foreground: #194e94;
+  --muted: #f5f8fc;
+  --muted-foreground: #6a7d96;
+  --accent: #e7f1ff;
+  --accent-foreground: #164989;
+  --destructive: #dc2626;
+  --destructive-foreground: white;
+  --border: #dce5f0;
+  --input: #cfdced;
+  --ring: #0868ff;
+  --radius: 0.625rem;
+  --chart-1: #0868ff;
+  --chart-2: #6366f1;
+  --chart-3: #d97706;
+  --chart-4: #7c3aed;
+  --chart-5: #db2777;
+  color: var(--foreground);
+  background: var(--background);
+  font-family: "Avenir Next", "Avenir", var(--font-geist-sans), sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  min-width: 0;
+}
+.ii-modern *,
+.ii-modern *::before,
+.ii-modern *::after {
+  border-color: var(--border);
+}
+.ii-modern :where(h1, h2, h3, h4, p) {
+  overflow-wrap: break-word;
+}
+.ii-modern :where([data-slot="card-content"]) {
+  overflow-wrap: normal;
+}
+.ii-modern [data-slot="card"] {
+  height: 100%;
+}
+.ii-modern [data-slot="tabs-list"] {
+  max-width: 100%;
+  overflow-x: auto;
+}
+.ii-modern button,
+.ii-modern input,
+.ii-modern textarea,
+.ii-modern select {
+  font-family: inherit;
+}
+.ii-modern button {
+  cursor: pointer;
+}
+.ii-modern button:disabled {
+  cursor: not-allowed;
+}
+.ii-modern :where([data-slot="table-cell"], [data-slot="table-head"]) {
+  padding: 12px;
+}
+.ii-modern a {
+  text-underline-offset: 3px;
+}
+.ii-modern {
+  --ii-info-background: #eff6ff;
+  --ii-info-foreground: #1e3a8a;
+  --ii-info-border: #bfdbfe;
+  --ii-success-background: #f0fdf4;
+  --ii-success-foreground: #14532d;
+  --ii-success-border: #bbf7d0;
+  --ii-warning-background: #fffbeb;
+  --ii-warning-foreground: #78350f;
+  --ii-warning-border: #fde68a;
+}
+.ii-modern .ii-alert-info {
+  background: var(--ii-info-background);
+  color: var(--ii-info-foreground);
+  border-color: var(--ii-info-border);
+}
+.ii-modern .ii-alert-success {
+  background: var(--ii-success-background);
+  color: var(--ii-success-foreground);
+  border-color: var(--ii-success-border);
+}
+.ii-modern .ii-alert-warning {
+  background: var(--ii-warning-background);
+  color: var(--ii-warning-foreground);
+  border-color: var(--ii-warning-border);
+}
+
+/* Theme-wide rhythm; generated programs choose only approved sizes and tones. */
+.ii-modern {
+  --ii-feature-background: #edf5ff;
+  --ii-feature-border: #bdd7fa;
+}
+.ii-modern .ii-card-muted {
+  background: var(--muted);
+  box-shadow: none;
+}
+.ii-modern .ii-card-accent {
+  background: var(--ii-feature-background);
+  border-color: var(--ii-feature-border);
+}
+.ii-modern [data-slot="card"] {
+  gap: 16px;
+  padding-block: 20px;
+  box-shadow: 0 1px 2px rgb(25 51 90 / 4%);
+}
+.ii-modern
+  :where(
+    [data-slot="card-header"],
+    [data-slot="card-content"],
+    [data-slot="card-footer"]
+  ) {
+  padding-inline: 20px;
+}
+.ii-modern [data-slot="card-title"] {
+  line-height: 1.4;
+}
+.ii-modern [data-slot="field"] {
+  min-width: 0;
+  gap: 8px;
+}
+.ii-modern [data-slot="field-label"] {
+  line-height: 1.4;
+}
+.ii-modern [data-slot="select-trigger"] {
+  width: 100%;
+}
+.ii-modern :where(input, textarea) {
+  background: var(--background);
+}
+.ii-modern :where([data-slot="tabs-trigger"][data-state="active"]) {
+  color: var(--primary);
+}
+
+/* Contained sidebar tokens follow Modern's palette, without global overrides. */
+.ii-modern {
+  --sidebar: #f6f9fd;
+  --sidebar-foreground: var(--foreground);
+  --sidebar-accent: var(--accent);
+  --sidebar-accent-foreground: var(--primary);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--ring);
+}
+.ii-modern .ii-app-shell {
+  display: grid;
+  grid-template-columns: minmax(160px, 220px) minmax(0, 1fr);
+  min-width: 0;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: clip;
+  background: var(--background);
+  container-type: inline-size;
+}
+.ii-modern .ii-app-shell[data-collapsed="true"] {
+  grid-template-columns: 60px minmax(0, 1fr);
+}
+.ii-modern .ii-app-shell[data-collapsed="true"] .ii-shell-label {
+  display: none;
+}
+.ii-modern .ii-block-sidebar {
+  background: var(--sidebar);
+  color: var(--sidebar-foreground);
+  border-color: var(--sidebar-border);
+}
+.ii-modern .ii-block-nav-button {
+  color: var(--sidebar-foreground);
+}
+.ii-modern .ii-block-nav-button:hover,
+.ii-modern .ii-block-nav-button[data-active="true"] {
+  background: var(--sidebar-accent);
+  color: var(--sidebar-accent-foreground);
+}
+.ii-modern .ii-block-nav-button[data-active="true"] {
+  font-weight: 600;
+}
+.ii-modern .ii-block-nav-button:focus-visible {
+  --tw-ring-color: var(--sidebar-ring);
+}
+.ii-modern .ii-metric-cards {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+  gap: 16px;
+}
+.ii-modern .ii-metric-value {
+  display: block;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.7px;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+.ii-modern .ii-auth-layout {
+  display: flex;
+  min-width: 0;
+  min-height: 480px;
+  justify-content: center;
+  align-items: center;
+  padding: 32px 20px;
+  background: var(--muted);
+  border-radius: 14px;
+}
+@container (max-width: 650px) {
+  .ii-modern .ii-shell-content {
+    padding: 16px;
+  }
+}

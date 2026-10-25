@@ -1,0 +1,346 @@
+{
+  "root": "root",
+  "elements": {
+    "action_btn_1": {
+      "type": "Button",
+      "props": {
+        "label": "Send Money",
+        "variant": "primary",
+        "disabled": false
+      },
+      "children": []
+    },
+    "action_btn_2": {
+      "type": "Button",
+      "props": {
+        "label": "Pay Bill",
+        "variant": "secondary",
+        "disabled": false
+      },
+      "children": []
+    },
+    "action_btn_3": {
+      "type": "Button",
+      "props": {
+        "label": "Deposit Check",
+        "variant": "secondary",
+        "disabled": false
+      },
+      "children": []
+    },
+    "action_card_1": {
+      "type": "Card",
+      "props": {
+        "title": "Transfer Funds",
+        "description": null,
+        "maxWidth": "full",
+        "centered": false,
+        "className": null
+      },
+      "children": [
+        "action_desc_1",
+        "action_btn_1"
+      ]
+    },
+    "action_card_2": {
+      "type": "Card",
+      "props": {
+        "title": "Pay Utilities",
+        "description": null,
+        "maxWidth": "full",
+        "centered": false,
+        "className": null
+      },
+      "children": [
+        "action_desc_2",
+        "action_btn_2"
+      ]
+    },
+    "action_card_3": {
+      "type": "Card",
+      "props": {
+        "title": "Mobile Deposit",
+        "description": null,
+        "maxWidth": "full",
+        "centered": false,
+        "className": null
+      },
+      "children": [
+        "action_desc_3",
+        "action_btn_3"
+      ]
+    },
+    "action_desc_1": {
+      "type": "Text",
+      "props": {
+        "text": "Instant transfer to verified accounts or external banks.",
+        "variant": "muted"
+      },
+      "children": []
+    },
+    "action_desc_2": {
+      "type": "Text",
+      "props": {
+        "text": "Schedule recurring or one-time utility and credit payments.",
+        "variant": "muted"
+      },
+      "children": []
+    },
+    "action_desc_3": {
+      "type": "Text",
+      "props": {
+        "text": "Deposit checks electronically with immediate standard clearance.",
+        "variant": "muted"
+      },
+      "children": []
+    },
+    "actions_grid": {
+      "type": "Grid",
+      "props": {
+        "columns": 3,
+        "gap": "md",
+        "className": null
+      },
+      "children": [
+        "action_card_1",
+        "action_card_2",
+        "action_card_3"
+      ]
+    },
+    "layout_stack": {
+      "type": "Stack",
+      "props": {
+        "direction": "horizontal",
+        "gap": "lg",
+        "align": "start",
+        "justify": "start",
+        "className": null
+      },
+      "children": [
+        "sidebar_card",
+        "main_stack"
+      ]
+    },
+    "main_stack": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "lg",
+        "align": "stretch",
+        "justify": "start",
+        "className": null
+      },
+      "children": [
+        "page_heading",
+        "metrics_grid",
+        "actions_grid",
+        "transactions_card"
+      ]
+    },
+    "metric_card_balance": {
+      "type": "Card",
+      "props": {
+        "title": "Total Balance",
+        "description": "Available checking balance",
+        "maxWidth": "full",
+        "centered": false,
+        "className": null
+      },
+      "children": [
+        "metric_val_balance"
+      ]
+    },
+    "metric_card_expense": {
+      "type": "Card",
+      "props": {
+        "title": "Monthly Expenses",
+        "description": "Monthly spending",
+        "maxWidth": "full",
+        "centered": false,
+        "className": null
+      },
+      "children": [
+        "metric_val_expense"
+      ]
+    },
+    "metric_card_income": {
+      "type": "Card",
+      "props": {
+        "title": "Monthly Income",
+        "description": "Deposits this cycle",
+        "maxWidth": "full",
+        "centered": false,
+        "className": null
+      },
+      "children": [
+        "metric_val_income"
+      ]
+    },
+    "metric_card_savings": {
+      "type": "Card",
+      "props": {
+        "title": "Savings Reserve",
+        "description": "High-yield reserve (4.5% APY)",
+        "maxWidth": "full",
+        "centered": false,
+        "className": null
+      },
+      "children": [
+        "metric_val_savings"
+      ]
+    },
+    "metric_val_balance": {
+      "type": "Text",
+      "props": {
+        "text": "$48,250.80",
+        "variant": "lead"
+      },
+      "children": []
+    },
+    "metric_val_expense": {
+      "type": "Text",
+      "props": {
+        "text": "$3,842.15",
+        "variant": "lead"
+      },
+      "children": []
+    },
+    "metric_val_income": {
+      "type": "Text",
+      "props": {
+        "text": "$12,450.00",
+        "variant": "lead"
+      },
+      "children": []
+    },
+    "metric_val_savings": {
+      "type": "Text",
+      "props": {
+        "text": "$28,500.00",
+        "variant": "lead"
+      },
+      "children": []
+    },
+    "metrics_grid": {
+      "type": "Grid",
+      "props": {
+        "columns": 4,
+        "gap": "md",
+        "className": null
+      },
+      "children": [
+        "metric_card_balance",
+        "metric_card_income",
+        "metric_card_expense",
+        "metric_card_savings"
+      ]
+    },
+    "nav_stack": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "sm",
+        "align": "stretch",
+        "justify": "start",
+        "className": null
+      },
+      "children": [
+        "nav_item_1",
+        "nav_item_2",
+        "nav_item_3",
+        "nav_item_4"
+      ]
+    },
+    "page_heading": {
+      "type": "Heading",
+      "props": {
+        "text": "Customer Banking Overview",
+        "level": "h1"
+      },
+      "children": []
+    },
+    "root": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "lg",
+        "align": "stretch",
+        "justify": "start",
+        "className": null
+      },
+      "children": [
+        "layout_stack"
+      ]
+    },
+    "sidebar_card": {
+      "type": "Card",
+      "props": {
+        "title": "Navigation",
+        "description": "Online Banking Services",
+        "maxWidth": "sm",
+        "centered": false,
+        "className": null
+      },
+      "children": [
+        "nav_stack"
+      ]
+    },
+    "transactions_card": {
+      "type": "Card",
+      "props": {
+        "title": "Recent Transactions",
+        "description": "Activity across active accounts",
+        "maxWidth": "full",
+        "centered": false,
+        "className": null
+      },
+      "children": [
+        "transactions_table"
+      ]
+    },
+    "transactions_table": {
+      "type": "Table",
+      "props": {
+        "columns": [
+          "Date",
+          "Description",
+          "Category",
+          "Amount",
+          "Status"
+        ],
+        "rows": [
+          [
+            "2026-09-29",
+            "Apex Cloud Solutions",
+            "Payroll",
+            "+$6,225.00",
+            "Completed"
+          ],
+          [
+            "2026-09-28",
+            "Whole Foods Market",
+            "Groceries",
+            "-$142.30",
+            "Completed"
+          ],
+          [
+            "2026-09-27",
+            "Metropolitan Power & Gas",
+            "Utilities",
+            "-$86.50",
+            "Pending"
+          ],
+          [
+            "2026-09-25",
+            "Northwest Tech Store",
+            "Electronics",
+            "-$349.99",
+            "Completed"
+          ]
+        ],
+        "caption": "Posted over the last 7 days"
+      },
+      "children": []
+    }
+  }
+}
