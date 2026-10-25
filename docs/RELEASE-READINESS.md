@@ -82,3 +82,11 @@ Release notes: see CHANGELOG.md. No launch or adoption metrics are invented; app
 ## Rollback / next operation
 
 This directory is a separate working release copy. Continue using the original prototype to return to the previous app; no production rollback is needed. Export a workspace backup before trying the release on an existing browser origin. Its temporary port 3012 has separate browser storage from port 3000.
+
+## Publication — 25 October 2026
+
+The owner subsequently authorized publication. Local application source is now public at https://github.com/vvmahesh0/ii-studio (Apache-2.0). Earlier “not approved/not uploaded” statements above are historical. This publication is source-only; no new native binary, signing, notarization or universal provider compatibility is claimed.
+
+The source-pattern scan passed; 262 initially staged files and the bundled plugin ZIP contents were scanned for credential-shaped values with no findings. This is not a comprehensive security audit. Private configuration, dependency/build directories, workspace data and deployment metadata are excluded by Git ignore rules. Current build, TypeScript and scoped lint passed. Existing provider verification boundaries remain.
+
+Both studios now include a LinkedIn author credit beside saved status. Static marketing site source lives in website/, with GitHub links and the same safe setup prompt as docs/SETUP-PROMPT.txt. Browser checked both empty-state footers and the website's Copied feedback. In-app-browser clipboard readback was empty despite the browser resolving writeText; native clipboard handoff was not independently proven by automation.
