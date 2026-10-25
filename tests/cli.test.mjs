@@ -70,7 +70,7 @@ test("CLI flags restrict tools, hooks and shell interpolation", () => {
   assert.ok(cliArguments("gemini").includes("--sandbox"));
 });
 test("missing configured executable fails without shell execution", async () => {
-  process.env.II_CODEX_PATH = join(tmpdir(), "ii-nonexistent-cli");
+  process.env.II_CODEX_PATH = join(tmpdir(), "ii-nonexistent-cli" + (process.platform === "win32" ? ".exe" : ""));
   await assert.rejects(executableFor("codex"), /not found/);
   delete process.env.II_CODEX_PATH;
 });
@@ -107,6 +107,7 @@ test("subprocess transport: success, malformed output, failure, bounded output a
       }
     }
     process.env.II_CODEX_PATH = await cliFixture(dir, "setInterval(()=>{},1000)");
+    await assert.rejects(new CliWorker("codex", "Test timeout", 100).turn("Synthetic", () => {}, new AbortController().signal), /too long/);
     const abort = new AbortController();
     const pending = new CliWorker("codex", "Test").turn(
       "Synthetic",

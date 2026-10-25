@@ -775,6 +775,11 @@
     "license": "MIT"
   },
   {
+    "name": "@types/cross-spawn",
+    "version": "6.0.6",
+    "license": "MIT"
+  },
+  {
     "name": "@types/d3-array",
     "version": "3.2.2",
     "license": "MIT"
@@ -1732,6 +1737,11 @@
   {
     "name": "fengari",
     "version": "0.1.5",
+    "license": "MIT"
+  },
+  {
+    "name": "fflate",
+    "version": "0.8.3",
     "license": "MIT"
   },
   {

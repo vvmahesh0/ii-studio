@@ -1,3 +1,4 @@
+import { fileURLToPath } from "node:url";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
@@ -9,7 +10,7 @@ import { layoutLab } from "../tools/figma-adapter-poc/fixtures/layout-lab.mjs";
 const base = new URL("../tools/figma-adapter-poc/", import.meta.url);
 async function module(name) {
   const result = await build({
-    entryPoints: [new URL(`src/${name}.ts`, base).pathname],
+    entryPoints: [fileURLToPath(new URL(`src/${name}.ts`, base))],
     bundle: true,
     platform: "node",
     format: "esm",

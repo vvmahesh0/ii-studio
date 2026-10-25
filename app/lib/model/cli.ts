@@ -162,9 +162,11 @@ function providerFailure(value: unknown) {
 export class CliWorker {
   private provider: Provider;
   private instructions: string;
-  constructor(provider: Provider, instructions: string) {
+  private timeoutMs: number;
+  constructor(provider: Provider, instructions: string, timeoutMs = 110000) {
     this.provider = provider;
     this.instructions = instructions;
+    this.timeoutMs = Math.min(110000, Math.max(50, timeoutMs));
   }
   async turn(
     prompt: string,
@@ -215,7 +217,7 @@ export class CliWorker {
                 "The CLI took too long. Try a smaller request or another compatible model.",
               ),
             ),
-          110000,
+          this.timeoutMs,
         );
         signal.addEventListener("abort", abort, { once: true });
         child.stderr.resume();
