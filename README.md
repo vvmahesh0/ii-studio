@@ -8,7 +8,7 @@ II studio helps designers, product managers, founders and business analysts expl
 
 **v0.1.0 release candidate · Local-first · Apache-2.0**
 
-**Verified platform: Apple Silicon macOS.** The web UI is not inherently Apple-Silicon-specific, but the current installer and CLI integration are not yet cross-platform. See [platform status](docs/PLATFORM-SUPPORT.md).
+**Targets: macOS (Apple Silicon and Intel) and native Windows 11 x64.** Intel Mac and Windows support is experimental; authenticated generation remains verified only on the documented Apple Silicon setup. See [platform status](docs/PLATFORM-SUPPORT.md) and [compatibility CI](https://github.com/vvmahesh0/ii-studio/actions/workflows/compatibility.yml).
 
 Website: [iistudio.vercel.app](https://iistudio.vercel.app/)
 
@@ -23,7 +23,7 @@ Generated interfaces use registered components. They do not deploy applications,
 
 ## Quick start
 
-Requirements: **Apple Silicon Mac (arm64), Node.js 24+, npm, and a supported CLI installed and signed in**. The app does not install AI CLIs or include a model subscription. Other platforms are not currently supported by the setup script. This is a release/setup limitation, not a requirement for running the AI model on an Apple processor.
+Requirements: **macOS arm64/x64 or Windows 11 x64, Node.js 24+, npm, Git, and a compatible CLI installed and signed in**. The app does not install AI CLIs or include a model subscription. Linux, WSL and Windows ARM are outside the current setup targets. Provider availability and sandbox support vary by platform. Windows Server CI is not Windows 11 desktop certification.
 
 Clone [vvmahesh0/ii-studio](https://github.com/vvmahesh0/ii-studio), then open its folder:
 
@@ -50,9 +50,11 @@ Manual alternative:
 
 ```sh
 npm ci
-cp -n .env.example .env.local
+node -e "require('node:fs').copyFileSync('.env.example','.env.local',require('node:fs').constants.COPYFILE_EXCL)"
 npm run dev
 ```
+
+On Windows, use `npm.cmd` if PowerShell blocks `npm.ps1`; do not change execution policy. No WSL or system zip utility is required. Setup preserves existing `.env.local`. See [platform troubleshooting](docs/PLATFORM-SUPPORT.md).
 
 For a production build:
 

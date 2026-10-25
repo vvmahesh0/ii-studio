@@ -1,0 +1,30 @@
+name: Platform compatibility
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  checks:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-15, macos-15-intel, windows-2025]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 25
+    env:
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Clean setup
+        run: npm run setup
+      - name: Preserve an existing configuration
+        run: npm run check:setup
+      - run: npm run lint
+      - run: npm run build
+      - run: npx tsc --noEmit
+      - run: npm test
+      - name: Verify production loopback server
+        run: node scripts/check-server.mjs

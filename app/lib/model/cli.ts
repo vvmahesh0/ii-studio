@@ -1,8 +1,7 @@
-import { spawn } from "node:child_process";
-import { access, mkdtemp, rm, mkdir, writeFile } from "node:fs/promises";
-import { constants } from "node:fs";
-import { tmpdir, homedir } from "node:os";
-import { join, isAbsolute } from "node:path";
+import { findExecutable, spawnCli, terminateCli } from "./process.ts";
+import { mkdtemp, rm, mkdir, writeFile } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 export const providers = ["antigravity", "codex", "claude", "gemini"] as const;
 export type Provider = (typeof providers)[number];
 const state = globalThis as typeof globalThis & {
@@ -37,27 +36,7 @@ export async function executableFor(provider: Provider): Promise<string> {
   const explicit =
     process.env[`II_${provider.toUpperCase()}_PATH`] ||
     (provider === "antigravity" ? process.env.AGY_CLI_PATH : undefined);
-  const candidates = explicit
-    ? [explicit]
-    : [
-        join(homedir(), ".local/bin", names[provider]),
-        ...(process.env.PATH || "")
-          .split(":")
-          .filter(Boolean)
-          .map((dir) => join(dir, names[provider])),
-      ];
-  for (const path of candidates) {
-    if (!isAbsolute(path)) continue;
-    try {
-      await access(path, constants.X_OK);
-      return path;
-    } catch {
-      /* Try next known path. */
-    }
-  }
-  throw new Error(
-    `${names[provider]} was not found. Install and sign in to it, or configure its absolute II_${provider.toUpperCase()}_PATH in .env.local.`,
-  );
+  return findExecutable(names[provider], explicit);
 }
 export async function cliReady() {
   await executableFor(localProvider());
@@ -205,27 +184,17 @@ export class CliWorker {
         );
       }
       return await new Promise<string>((resolve, reject) => {
-        const child = spawn(
+        const child = spawnCli(
           executable,
           cliArguments(this.provider, selection().model),
-          { cwd: dir, stdio: ["pipe", "pipe", "pipe"], detached: true },
+          dir,
         );
         let buffer = "",
           output = "",
           final = "",
           total = 0,
           settled = false;
-        const kill = () => {
-          try {
-            process.kill(-child.pid!, "SIGTERM");
-          } catch {}
-          const escalation = setTimeout(() => {
-            try {
-              process.kill(-child.pid!, "SIGKILL");
-            } catch {}
-          }, 1500);
-          escalation.unref();
-        };
+        const kill = () => terminateCli(child);
         const finish = (error?: Error) => {
           if (settled) return;
           settled = true;
@@ -335,7 +304,7 @@ export class CliWorker {
         if (signal.aborted) abort();
       });
     } finally {
-      await rm(dir, { recursive: true, force: true });
+      await rm(dir, { recursive: true, force: true, maxRetries: 10, retryDelay: 100 });
     }
   }
 }

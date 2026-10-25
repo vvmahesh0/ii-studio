@@ -1,6 +1,6 @@
 import { build } from "esbuild";
-import { mkdir, copyFile } from "node:fs/promises";
-import { execFileSync } from "node:child_process";
+import { mkdir, readFile, writeFile, rename } from "node:fs/promises";
+import { zipSync } from "fflate";
 import { fileURLToPath } from "node:url";
 const dir = fileURLToPath(new URL(".", import.meta.url));
 await build({
@@ -31,7 +31,8 @@ await mkdir(downloads,{recursive:true});
 const archive=downloads+"ii-studio-figma-plugin.zip";
 // zip updates existing archives; use a fresh temporary filename to avoid stale entries.
 const temporary=downloads+"ii-studio-figma-plugin-build.zip";
-execFileSync("/usr/bin/zip",["-q","-j",temporary,"manifest.json","code.js","ui.html","INSTALL.md","THIRD_PARTY_NOTICES.txt"],{cwd:dir+"plugin"});
-await copyFile(temporary,archive);
-const {unlink}=await import("node:fs/promises");await unlink(temporary);
+const files = ["manifest.json", "code.js", "ui.html", "INSTALL.md", "THIRD_PARTY_NOTICES.txt"];
+const entries = Object.fromEntries(await Promise.all(files.map(async name => [name, new Uint8Array(await readFile(dir + "plugin/" + name))])));
+await writeFile(temporary, zipSync(entries, { level: 6 }));
+await rename(temporary, archive);
 console.log("Packaged public/downloads/ii-studio-figma-plugin.zip");

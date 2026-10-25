@@ -1,0 +1,10 @@
+import { createRequire } from "node:module";
+import { spawn } from "node:child_process";
+const require = createRequire(import.meta.url);
+const [command, ...extra] = process.argv.slice(2);
+if (!["dev", "build", "start"].includes(command)) throw new Error("Expected dev, build or start.");
+if (extra.some(arg => (/^(--hostname|--host)(=|$)/.test(arg) || arg.startsWith("-H")))) throw new Error("II studio must remain bound to 127.0.0.1; hostname overrides are not supported.");
+const child = spawn(process.execPath, [require.resolve("next/dist/bin/next"), command, ...extra, ...(command === "build" ? [] : ["--hostname", "127.0.0.1"])], { stdio: "inherit", env: { ...process.env, NEXT_TELEMETRY_DISABLED: "1" }, windowsHide: true });
+for (const signal of ["SIGINT", "SIGTERM"]) process.on(signal, () => child.kill(signal));
+child.on("error", () => { console.error("Next.js could not start. Check dependencies and Node.js version."); process.exitCode = 1; });
+child.on("exit", code => { process.exitCode = code ?? 1; });

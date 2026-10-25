@@ -1,6 +1,6 @@
 # Local CLI compatibility
 
-All connections run on the user's Mac through installed official CLIs. Cloud-backed subscriptions retain their own limits and terms. There is no OpenRouter, Thesys gateway, hosted trial or studio API key. No offline inference provider is currently implemented.
+Connections run through official CLIs installed on the user's computer. Setup targets macOS arm64/x64 and native Windows 11 x64; Intel and Windows remain experimental. The actual live results below are from Apple Silicon macOS, not cross-platform certification. Cloud-backed subscriptions retain their own limits and terms. There is no OpenRouter, Thesys gateway, hosted trial or studio API key. No offline inference provider is currently implemented.
 
 | Connection | Implementation | Actual verification in this release preparation |
 |---|---|---|
@@ -11,7 +11,7 @@ All connections run on the user's Mac through installed official CLIs. Cloud-bac
 
 ## Configuration
 
-Edit .env.local using .env.example. II_CLI_PROVIDER chooses a provider; II_MODEL optionally chooses its compatible model. Empty means its default, except the existing Antigravity fallback remains gemini-3.8-flash-low (also overridable with legacy MOSAIC_GEMINI_MODEL). Each executable supports II_<PROVIDER>_PATH as an absolute path, otherwise ~/.local/bin and PATH are searched. The UI does not accept executable paths or shell commands.
+Edit .env.local using .env.example. II_CLI_PROVIDER chooses a provider; II_MODEL optionally chooses its compatible model. Empty means its default, except the existing Antigravity fallback remains gemini-3.8-flash-low (also overridable with legacy MOSAIC_GEMINI_MODEL). Each executable supports II_<PROVIDER>_PATH as an absolute path, otherwise ~/.local/bin and platform PATH are searched, with Windows PATHEXT for .exe/.cmd/.bat launchers. PowerShell-only launchers are rejected. The UI does not accept executable paths or shell commands.
 
 Connection settings detect executables and choose a provider/model for the current server process. They do not log users in, enumerate subscription entitlements or guarantee model access. Changes are blocked while a generation is active. Environment defaults are read again after restart. Workspaces remain untouched.
 
@@ -24,3 +24,5 @@ Antigravity retains its prepared catalog context. Other adapters repeat the rele
 Tool restriction flags and event schemas vary by CLI version. Unsupported flags fail rather than downgrade permissions. Unexpected tool output rejects the result but is not itself an OS sandbox. Run only trusted CLIs, keep the server loopback-only, and read SECURITY.md. Claude/Gemini are experimental until live tests pass.
 
 For new tools, add an explicit adapter and compatibility tests; do not run arbitrary user-supplied command templates.
+
+See [PLATFORM-SUPPORT.md](PLATFORM-SUPPORT.md) for installation/build, synthetic transport and live-provider verification levels. Provider restrictions are never relaxed to make another OS work.

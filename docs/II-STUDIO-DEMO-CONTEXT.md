@@ -19,7 +19,7 @@ Suggested positioning: **Describe an idea. See it take shape. Refine it. Keep yo
 
 ## 2. What the application is today
 
-II studio is a local-first web application running in a browser on a Mac. The supported release target is Apple Silicon macOS. It is not yet a packaged native macOS application or a public hosted service.
+II studio is a local-first web application running in a browser on a Mac. Setup targets macOS arm64/x64 and native Windows 11 x64. Intel Mac and Windows support is experimental; platform/provider live verification is tracked separately in PLATFORM-SUPPORT.md. It is not yet a packaged native macOS application or a public hosted service.
 
 The interface, registered component libraries, diagram editor, validation, automatic diagram layout, image export and workspace storage run locally. AI requests go through an installed, authenticated CLI. Cloud-backed models still use their provider's servers; running the CLI on a Mac does not make inference offline.
 

@@ -13,3 +13,7 @@
 - **Port occupied:** use the exact URL printed by Next, remembering a changed port has separate browser-local storage. To specify a port: npm run dev -- --port 3010.
 
 Only Apple Silicon macOS is in the first-release scope. CLI versions vary; see PROVIDERS.md for actual checks and gaps.
+
+## Intel Mac and Windows setup
+
+The older Apple-Silicon-only scope above is historical. Current setup also accepts Intel macOS and native Windows 11 x64 experimentally; see PLATFORM-SUPPORT.md for actual checks. Windows PowerShell users can run npm.cmd rather than changing execution policy. Configure an absolute .exe/.cmd/.bat provider launcher if detection fails; .ps1-only launchers are not accepted. Provider sandbox requirements vary: do not remove restrictions or install WSL to work around a failure automatically.

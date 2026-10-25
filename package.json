@@ -3,16 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "npm run figma:build && node scripts/prepare-flow-assets.mjs && NEXT_TELEMETRY_DISABLED=1 next dev --hostname 127.0.0.1",
-    "build": "NEXT_TELEMETRY_DISABLED=1 next build",
-    "start": "NEXT_TELEMETRY_DISABLED=1 next start --hostname 127.0.0.1",
+    "dev": "npm run figma:build && node scripts/prepare-flow-assets.mjs && node scripts/next.mjs dev",
+    "build": "node scripts/next.mjs build",
+    "start": "node scripts/next.mjs start",
     "lint": "eslint",
     "openui:generate": "openui generate app/lib/openui/library.ts --spec --out app/lib/openui/generated/spec.json --no-telemetry && openui generate app/lib/openui/modern/library.ts --spec --out app/lib/openui/modern/generated/spec.json --no-telemetry",
     "prebuild": "npm run figma:build && node scripts/prepare-flow-assets.mjs && npm run openui:generate",
     "test": "node --experimental-strip-types --test tests/*.test.mjs",
     "figma:build": "node tools/figma-adapter-poc/build.mjs",
     "setup": "node scripts/setup.mjs",
-    "check": "npm run test && npm run lint && next typegen && tsc --noEmit"
+    "check": "npm run test && npm run lint && next typegen && tsc --noEmit",
+    "check:setup": "node scripts/check-setup.mjs"
   },
   "dependencies": {
     "@openuidev/lang-core": "1.0.1",
@@ -20,9 +21,11 @@
     "@xyflow/react": "^12.12.0",
     "class-variance-authority": "^0.7.1",
     "cn": "^0.5.0",
+    "cross-spawn": "7.0.6",
     "date-fns": "^4.4.0",
     "elkjs": "^0.12.0",
     "embla-carousel-react": "^8.6.0",
+    "fflate": "0.8.3",
     "html-to-image": "1.11.11",
     "idb": "^8.0.4",
     "katex": "^0.19.0",
@@ -41,6 +44,7 @@
   "devDependencies": {
     "@openuidev/cli": "0.6.0",
     "@tailwindcss/postcss": "^4",
+    "@types/cross-spawn": "6.0.6",
     "@types/katex": "^0.16.8",
     "@types/node": "^20",
     "@types/react": "^19",

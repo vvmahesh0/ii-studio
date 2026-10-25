@@ -18,3 +18,11 @@ ELK is copied unchanged by scripts/prepare-flow-assets.mjs. Its source remains a
 The installed-package inventory is machine/platform-specific and includes build dependencies. It is not a legal opinion or a guarantee that every transitive asset is covered. No proprietary font files are distributed: Avenir Next is a system font preference. The CLIs and models are installed/accessed by users separately, not redistributed here.
 
 The Figma plugin UI embeds Lucide icon SVGs. Its downloadable ZIP includes the full Lucide ISC and applicable Feather MIT notices in THIRD_PARTY_NOTICES.txt.
+
+## Cross-platform process and packaging helpers
+
+- cross-spawn — MIT — https://github.com/moxystudio/node-cross-spawn
+- fflate — MIT — https://github.com/101arrowz/fflate
+- @types/cross-spawn — MIT — https://github.com/DefinitelyTyped/DefinitelyTyped (development types)
+
+Used for platform-aware CLI launching and local plugin ZIP packaging. Their installed packages retain their license notices; no new hosted service is introduced.

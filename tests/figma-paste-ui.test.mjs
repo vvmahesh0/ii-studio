@@ -7,7 +7,7 @@ const code=html.match(/<script>([\s\S]*?)<\/script>/)[1];
 function setup(){
  const elements=new Map(),listeners={},messages=[];
  const node=()=>({value:'',hidden:false,disabled:false,dataset:{},children:[],textContent:'',classList:{add(){},remove(){}},focus(){this.focused=true;},append(x){this.children.push(x);},replaceChildren(){this.children=[];},addEventListener(type,fn){this.listeners??={};this.listeners[type]=fn;}});
- const document={getElementById(id){if(!elements.has(id))elements.set(id,node());return elements.get(id);},createElement:()=>node(),createTextNode:t=>t,addEventListener(type,fn){listeners[type]=fn;}};
+ const document={getElementById(id){if(!elements.has(id))elements.set(id,node());return elements.get(id);},querySelector(selector){return this.getElementById(selector);},createElement:()=>node(),createTextNode:t=>t,addEventListener(type,fn){listeners[type]=fn;}};
  const context=vm.createContext({document,navigator:{userAgent:'test',clipboard:{}},isSecureContext:true,parent:{postMessage:m=>messages.push(m.pluginMessage)},Blob,URL,Date,Math,performance,setTimeout});
  vm.runInContext(code,context);
  return {elements,listeners,messages,context};

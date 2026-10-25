@@ -1,5 +1,6 @@
+import { spawnCli, terminateCli } from "../model/process.ts";
 import { executableFor, selection } from "../model/cli";
-import { spawn, type ChildProcessWithoutNullStreams } from "node:child_process";
+import { type ChildProcessWithoutNullStreams } from "node:child_process";
 import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -51,7 +52,7 @@ export class GeminiWorker {
       this.startupResolve = resolve;
       this.startupReject = reject;
     });
-    this.child = spawn(
+    this.child = spawnCli(
       /* turbopackIgnore: true */ executable,
       [
         "--input-format",
@@ -65,7 +66,7 @@ export class GeminiWorker {
         "--disable-slash-commands",
         "--sandbox",
       ],
-      { cwd: directory, stdio: ["pipe", "pipe", "pipe"] },
+      directory,
     );
     const timer = setTimeout(
       () =>
@@ -104,7 +105,7 @@ export class GeminiWorker {
       ),
     );
     this.parentExit = () => {
-      this.child.kill("SIGTERM");
+      terminateCli(this.child);
     };
     process.once("exit", this.parentExit);
   }
@@ -248,13 +249,9 @@ export class GeminiWorker {
     this.current = null;
     current?.cleanup();
     current?.reject(error);
-    this.child.kill("SIGTERM");
-    const child = this.child;
-    setTimeout(() => {
-      if (child.exitCode === null) child.kill("SIGKILL");
-    }, 2000).unref();
+    terminateCli(this.child);
     process.removeListener("exit", this.parentExit);
-    void rm(this.directory, { recursive: true, force: true });
+    void rm(this.directory, { recursive: true, force: true, maxRetries: 10, retryDelay: 100 });
   }
 }
 

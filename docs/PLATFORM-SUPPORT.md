@@ -2,28 +2,37 @@
 
 Updated: 25 October 2026
 
-## Architecture versus current release support
+II studio's setup and runtime adapters target macOS arm64/x64 and native Windows 11 x64. Intel macOS and Windows are experimental until authenticated provider generation is verified on those systems. The app is not a native desktop binary; it runs locally through Node.js and a browser. The model does not have to run on the user's processor.
 
-II studio uses a browser UI, Next.js/Node.js server, React components and JavaScript diagram libraries. The product's core design does not inherently require an Apple Silicon processor. Cloud inference runs through the selected provider; it does not require the model to run on the user's processor.
+| Platform | Installation/build | Synthetic transport | Authenticated generation |
+|---|---|---|---|
+| Apple Silicon macOS | Local checks; compatibility CI | Local tests and CI | Antigravity and Codex have recorded live checks; see PROVIDERS.md |
+| Intel macOS | CI on macos-15-intel; check linked run for actual outcome | Same fixtures, including cancellation | Not yet verified; experimental |
+| Windows 11 x64 | CI uses Windows Server 2025 x64, not a Windows 11 desktop | Same fixtures using native .cmd launchers | Not yet verified; experimental |
+| Linux / WSL / Windows ARM | Outside this release's setup targets | No support claim | No support claim |
 
-That does **not** mean the published release currently works on any OS or architecture.
+See the repository's Platform compatibility workflow for actual runner results. A configured job is not a passed check. Windows Server CI is useful build/process evidence, not Windows 11 browser or AI-provider certification.
 
-| Platform | Current status |
-|---|---|
-| Apple Silicon macOS | Verified release target, with provider-specific verification limits documented in PROVIDERS.md. |
-| Intel macOS | Plausible porting target, but not verified; npm run setup currently rejects it. |
-| Windows | Not supported by the current setup. Requires setup, shell-command and CLI process/launcher compatibility work, then live verification. |
-| Linux | Plausible porting target, but not verified; npm run setup currently rejects it. Provider sandbox/installation behavior also needs review. |
-| Other architectures | No claim of compatibility. Node.js, native build dependencies and the selected CLI must support the actual OS/architecture. |
+## Installation
 
-## Concrete release limitations
+Install a compatible Node.js 24+ release with npm, Git, a modern browser and your chosen supported official CLI. No WSL, Python, system zip, global npm tools or administrator privileges are required by II studio's setup. A provider's own installation may have additional requirements; do not bypass them.
 
-- scripts/setup.mjs explicitly requires darwin/arm64 and exits elsewhere.
-- package.json uses POSIX environment-variable assignment in development/build/start scripts, which does not work directly in Windows' default command shell.
-- CLI discovery, launcher extensions, process-group termination and sandbox flags require platform-specific review. Windows-installed .cmd/.exe launchers and subprocess cancellation cannot be assumed equivalent to Unix executables.
-- CLI availability and authenticated model access are separate from browser support.
-- Avenir Next is a local macOS font choice with fallbacks, not a bundled font or processor requirement.
+From the repository root run `npm run setup`, choose provider settings in ignored `.env.local`, authenticate through that CLI, then run `npm run dev`. For production use `npm run build` then `npm start`. Use `npm start -- --port 3012` if the default port is busy. Servers bind to 127.0.0.1 only.
 
-Do not simply remove the platform guard and call the port complete. Cross-platform support requires adapting these paths, preserving security restrictions, and checking real generation, refinement, cancellation, local storage and exports on each target. No Windows, Intel Mac or Linux runtime was available or verified during this documentation update.
+In Windows PowerShell, if execution policy blocks npm.ps1, use `npm.cmd run setup` and the equivalent npm.cmd commands; do not weaken execution policy. Quoted absolute provider paths can be configured in .env.local, e.g. `II_CODEX_PATH="C:\Program Files\Tools\codex.cmd"`. Supported Windows launchers are .exe, .cmd and .bat. PowerShell-only .ps1 launchers are not accepted; locate the provider's official native/npm launcher instead.
 
-No runtime behavior changed in this update. Existing Apple Silicon setup and provider support boundaries remain unchanged.
+Discovery uses platform PATH/PATHEXT and optional explicit paths. On macOS those paths must be executable; on Windows they must be supported files. Empty or relative PATH entries are not searched. CLI prompts travel through stdin, not shell commands. Cancellation targets only the owned process tree.
+
+Setup preserves existing environment configuration and lockfile. On macOS a new .env.local gets mode 0600. On Windows access follows your filesystem ACLs; setup does not claim POSIX permissions protect Windows files.
+
+## Provider compatibility remains separate
+
+- Antigravity's sandbox implementation and supported CLI flags are not guaranteed on every OS.
+- Codex uses restrictive flags that must be supported by its installed version/platform.
+- Claude Code and Gemini CLI remain experimental; cross-platform setup does not upgrade their live-verification status.
+- Unsupported flags or missing provider prerequisites fail with guidance. Studio does not disable sandbox/tool restrictions, install WSL, or switch providers automatically.
+- CLI detection is not proof of authentication, model entitlement, streaming granularity or sandbox availability.
+
+No model accounts or credentials are installed by CI. A human must authorize live provider smoke checks on a new platform before its status is promoted. Those checks include Interface and Flowchart generation/refinement, Stop, temporary cleanup, saved history, fullscreen and PNG export.
+
+Older docs may describe the original Apple-Silicon-only release; this document and the current README supersede that installation restriction. They do not supersede historical provider test results.

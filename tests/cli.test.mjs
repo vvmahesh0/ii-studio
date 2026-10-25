@@ -1,6 +1,7 @@
+import { cliFixture } from "./helpers/cli-fixture.mjs";
 import test from "node:test";
 import assert from "node:assert/strict";
-import { mkdtemp, writeFile, chmod, rm } from "node:fs/promises";
+import { mkdtemp, rm } from "node:fs/promises";
 import { join } from "node:path";
 import { tmpdir } from "node:os";
 import {
@@ -69,15 +70,14 @@ test("CLI flags restrict tools, hooks and shell interpolation", () => {
   assert.ok(cliArguments("gemini").includes("--sandbox"));
 });
 test("missing configured executable fails without shell execution", async () => {
-  process.env.II_CODEX_PATH = "/does/not/exist";
+  process.env.II_CODEX_PATH = join(tmpdir(), "ii-nonexistent-cli");
   await assert.rejects(executableFor("codex"), /not found/);
   delete process.env.II_CODEX_PATH;
 });
 test("subprocess transport: success, malformed output, failure, bounded output and cancellation", async () => {
   const dir = await mkdtemp(join(tmpdir(), "ii-test-"));
-  const path = join(dir, "fake-cli");
+
   try {
-    process.env.II_CODEX_PATH = path;
     for (const [body, error] of [
       [
         `process.stdin.resume();process.stdin.on('end',()=>console.log(JSON.stringify({type:'item.completed',item:{type:'agent_message',text:'Fixture'}})))`,
@@ -93,8 +93,7 @@ test("subprocess transport: success, malformed output, failure, bounded output a
         /too large/,
       ],
     ]) {
-      await writeFile(path, `#!/usr/bin/env node\n${body}\n`);
-      await chmod(path, 0o700);
+      process.env.II_CODEX_PATH = await cliFixture(dir, body);
       const chunks = [];
       const p = new CliWorker("codex", "Test only").turn(
         "Synthetic",
@@ -107,7 +106,7 @@ test("subprocess transport: success, malformed output, failure, bounded output a
         assert.deepEqual(chunks, ["Fixture"]);
       }
     }
-    await writeFile(path, "#!/usr/bin/env node\nsetInterval(()=>{},1000)");
+    process.env.II_CODEX_PATH = await cliFixture(dir, "setInterval(()=>{},1000)");
     const abort = new AbortController();
     const pending = new CliWorker("codex", "Test").turn(
       "Synthetic",
@@ -118,7 +117,7 @@ test("subprocess transport: success, malformed output, failure, bounded output a
     await assert.rejects(pending, /stopped/);
   } finally {
     delete process.env.II_CODEX_PATH;
-    await rm(dir, { recursive: true, force: true });
+    await rm(dir, { recursive: true, force: true, maxRetries: 10, retryDelay: 100 });
   }
 });
 

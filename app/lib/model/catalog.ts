@@ -1,4 +1,4 @@
-import { spawn } from "node:child_process";
+import { spawnCli, terminateCli } from "./process.ts";
 import { tmpdir } from "node:os";
 import { executableFor, type Provider } from "./cli.ts";
 
@@ -28,21 +28,17 @@ export function parseCodexModels(result: unknown): ModelOption[] {
 async function discover(provider: Provider, executable: string): Promise<ModelOption[]> {
   if (provider !== "antigravity" && provider !== "codex") return [];
   return new Promise((resolve, reject) => {
-    const child = spawn(executable, provider === "codex"
+    const child = spawnCli(executable, provider === "codex"
       ? ["app-server", "--listen", "stdio://", "-c", "analytics.enabled=false"]
-      : ["models"], { cwd: tmpdir(), stdio: ["pipe", "pipe", "ignore"], detached: true });
+      : ["models"], tmpdir());
+    child.stderr.resume();
     let output = "", total = 0, settled = false;
     const finish = (models?: ModelOption[]) => {
       if (settled) return;
       settled = true;
       clearTimeout(timer);
       child.stdin.destroy();
-      try { process.kill(-child.pid!, "SIGTERM"); } catch { child.kill(); }
-      const cleanup = setTimeout(() => {
-        if (child.exitCode !== null || child.signalCode !== null) return;
-        try { process.kill(-child.pid!, "SIGKILL"); } catch { child.kill("SIGKILL"); }
-      }, 1000);
-      cleanup.unref();
+      terminateCli(child, 1000);
       if (models?.length) resolve(models);
       else reject(new Error("Model list unavailable"));
     };
